@@ -68,7 +68,7 @@ class ViewController: UIViewController {
 
         if let popoverPresentationController = alert.popoverPresentationController {
             popoverPresentationController.sourceView = view
-            popoverPresentationController.sourceRect = CGRect(x: 0, y: 0, width: 64, height: 64)
+            popoverPresentationController.sourceRect = CGRect(x: imageView.frame.midX, y: imageView.frame.midY, width: 0, height: 0)
         }
         self.present(alert, animated: true, completion: nil)
     }
@@ -87,11 +87,11 @@ class ViewController: UIViewController {
 
         if firtImageView.image != nil && secondImageView.image != nil {
             let firstImage = RGLImage(image: firtImageView.image!)
-            firstImage.imageType = getImageType(tag: firtImageView.tag)
+            firstImage.imageType = RGLImageType(rawValue: firtImageView.tag) ?? .printed
             matchRequestImages.append(firstImage)
 
             let secondImage = RGLImage(image: secondImageView.image!)
-            secondImage.imageType = getImageType(tag: secondImageView.tag)
+            secondImage.imageType = RGLImageType(rawValue: secondImageView.tag) ?? .printed
             matchRequestImages.append(secondImage)
 
             let request = RGLMatchFacesRequest(images: matchRequestImages, similarityThreshold: 0, customMetadata: nil)
@@ -102,6 +102,10 @@ class ViewController: UIViewController {
             self.clearButton.isEnabled = false
             
             RGLFaceSDK.service.matchFaces(request, completion: { (response: RGLMatchFacesResponse?, error: Error?) in
+                self.matchFacesButton.isEnabled = true
+                self.livenessButton.isEnabled = true
+                self.clearButton.isEnabled = true
+                
                 if let response = response {
                     if let matchedFaces = response.matchedFaces.first {
                         let similarity = "Similarity: " + String(format: "%.2f", Double(truncating: matchedFaces.similarity) * 100) + "%"
@@ -109,17 +113,11 @@ class ViewController: UIViewController {
                     } else {
                         self.similarityLabel.text = "Similarity: error"
                     }
-                    
-                    self.matchFacesButton.isEnabled = true
-                    self.livenessButton.isEnabled = true
-                    self.clearButton.isEnabled = true
-
                     print(response)
                 } else {
                     let alert = UIAlertController(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-
                     print(error ?? "Unknown")
                 }
             })
@@ -192,21 +190,6 @@ class ViewController: UIViewController {
             @unknown default:
                 fatalError()
             }
-        }
-    }
-    
-    func getImageType(tag: Int) -> RGLImageType {
-        switch tag {
-        case 1:
-            return .printed
-        case 2:
-            return .RFID
-        case 3:
-            return .live
-        case 4:
-            return .liveWithDoc
-        default:
-            return .printed
         }
     }
 }
