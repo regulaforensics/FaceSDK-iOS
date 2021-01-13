@@ -5,6 +5,6 @@ target 'FaceSDKSample-ObjC' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'FaceSDKBeta', '5.3.167'
+  pod 'FaceSDKBeta', '5.4.181'
 
 end
