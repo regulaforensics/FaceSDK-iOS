@@ -82,10 +82,14 @@
 }
 
 - (void)startFaceCaptureVC:(UIViewController *)controller imageView:(UIImageView *)imageView {
-    [RGLFaceSDK.service presentFaceCaptureViewControllerFrom:self animated:YES onCapture:^(RGLImage * _Nullable image) {
-        if (image != nil) {
-            imageView.image = image.image;
-            imageView.tag = RGLImageTypeLive;
+    [RGLFace.service presentFaceCaptureViewControllerFrom:self animated:YES onCapture:^(RGLFaceCaptureResponse * _Nullable faceCaptureResponse) {
+        if (faceCaptureResponse != nil) {
+            RGLImage *image = [[RGLImage alloc] initWithImage:faceCaptureResponse.image.image];
+            
+            if (image != nil) {
+                imageView.image = image.image;
+                imageView.tag = RGLImageTypeLive;
+            }
         }
     } completion:nil];
 }
@@ -109,7 +113,7 @@
         self.livenessButton.enabled = NO;
         self.clearButton.enabled = NO;
 
-        [RGLFaceSDK.service matchFaces:request completion:^(RGLMatchFacesResponse * _Nullable response, NSError * _Nullable error) {
+        [RGLFace.service matchFaces:request completion:^(RGLMatchFacesResponse * _Nullable response) {
             self.matchFacesButton.enabled = YES;
             self.livenessButton.enabled = YES;
             self.clearButton.enabled = YES;
@@ -124,10 +128,10 @@
                 }
                 NSLog(@"%@", response);
             } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:error.localizedDescription message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No response" message:nil preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
                 [self presentViewController:alert animated:YES completion:nil];
-                NSLog(@"%@", error);
+                NSLog(@"No response");
             }
         }];
     } else {
@@ -138,7 +142,7 @@
 }
 
 - (IBAction)startLiveness:(id)sender {
-    [RGLFaceSDK.service startLivenessFrom:self animated:YES onLiveness:^(RGLLivenessResponse * _Nonnull livenessResponse) {
+    [RGLFace.service startLivenessFrom:self animated:YES onLiveness:^(RGLLivenessResponse * _Nonnull livenessResponse) {
         if (livenessResponse != nil) {
             self.firtImageView.image = livenessResponse.image;
             self.firtImageView.tag = RGLImageTypeLive;

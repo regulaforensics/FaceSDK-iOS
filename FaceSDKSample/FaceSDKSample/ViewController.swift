@@ -56,12 +56,12 @@ class ViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: {_ in
             self.currentImageView = imageView
-            imageView.tag = RGLImageType.printed.rawValue
+            imageView.tag = ImageType.printed.rawValue
             self.pickImage(sourceType: .photoLibrary)
         }))
         alert.addAction(UIAlertAction(title: "Camera shoot", style: .default, handler: {_ in
             self.currentImageView = imageView
-            imageView.tag = RGLImageType.live.rawValue
+            imageView.tag = ImageType.live.rawValue
             self.pickImage(sourceType: .camera)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -74,34 +74,36 @@ class ViewController: UIViewController {
     }
     
     func startFaceCaptureVC(controller: UIViewController, imageView: UIImageView) {
-        RGLFaceSDK.service.presentFaceCaptureViewController(from: controller, animated: true, onCapture: { (image) in
-            if image != nil {
-                imageView.image = image?.image
-                imageView.tag = RGLImageType.live.rawValue
+        Face.service.presentCaptureViewController(from: controller, animated: true, onCapture: { (faceCaptureResponse: FaceCaptureResponse?) in
+            if let faceCaptureResponse = faceCaptureResponse {
+                if let image = faceCaptureResponse.image {
+                    imageView.image = image.image
+                    imageView.tag = ImageType.live.rawValue
+                }
             }
         }, completion: nil)
     }
     
     @IBAction func startMatchFaces(sender: UIButton) {
-        var matchRequestImages = [RGLImage]()
+        var matchRequestImages = [Image]()
 
         if firtImageView.image != nil && secondImageView.image != nil {
-            let firstImage = RGLImage(image: firtImageView.image!)
-            firstImage.imageType = RGLImageType(rawValue: firtImageView.tag) ?? .printed
+            let firstImage = Image(image: firtImageView.image!)
+            firstImage.imageType = ImageType(rawValue: firtImageView.tag) ?? .printed
             matchRequestImages.append(firstImage)
 
-            let secondImage = RGLImage(image: secondImageView.image!)
-            secondImage.imageType = RGLImageType(rawValue: secondImageView.tag) ?? .printed
+            let secondImage = Image(image: secondImageView.image!)
+            secondImage.imageType = ImageType(rawValue: secondImageView.tag) ?? .printed
             matchRequestImages.append(secondImage)
 
-            let request = RGLMatchFacesRequest(images: matchRequestImages, similarityThreshold: 0, customMetadata: nil)
+            let request = MatchFacesRequest(images: matchRequestImages, similarityThreshold: 0, customMetadata: nil)
                         
             self.similarityLabel.text = "Processing..."
             self.matchFacesButton.isEnabled = false
             self.livenessButton.isEnabled = false
             self.clearButton.isEnabled = false
             
-            RGLFaceSDK.service.matchFaces(request, completion: { (response: RGLMatchFacesResponse?, error: Error?) in
+            Face.service.matchFaces(request, completion: { (response: MatchFacesResponse?) in
                 self.matchFacesButton.isEnabled = true
                 self.livenessButton.isEnabled = true
                 self.clearButton.isEnabled = true
@@ -115,10 +117,10 @@ class ViewController: UIViewController {
                     }
                     print(response)
                 } else {
-                    let alert = UIAlertController(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "No response", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                    print(error ?? "Unknown")
+                    print("No response")
                 }
             })
 
@@ -130,10 +132,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startLiveness(sender: UIButton) {
-        RGLFaceSDK.service.startLiveness(from: self, animated: true) { (livenessResponse: RGLLivenessResponse?) in
+        Face.service.startLiveness(from: self, animated: true) { (livenessResponse: LivenessResponse?) in
             if let livenessResponse = livenessResponse {
                 self.firtImageView.image = livenessResponse.image
-                self.firtImageView.tag = RGLImageType.live.rawValue
+                self.firtImageView.tag = ImageType.live.rawValue
                 
                 let livenessStatus = livenessResponse.liveness == .passed ? "Liveness: passed" : "Liveness: unknown"
                 self.livenessLabel.text = livenessStatus
