@@ -95,9 +95,9 @@ class ViewController: UIViewController {
             let secondImage = Image(image: secondImageView.image!)
             secondImage.imageType = ImageType(rawValue: secondImageView.tag) ?? .printed
             matchRequestImages.append(secondImage)
-
-            let request = MatchFacesRequest(images: matchRequestImages, similarityThreshold: 0, customMetadata: nil)
-                        
+            
+            let request = MatchFacesRequest(images: matchRequestImages)
+            
             self.similarityLabel.text = "Processing..."
             self.matchFacesButton.isEnabled = false
             self.livenessButton.isEnabled = false

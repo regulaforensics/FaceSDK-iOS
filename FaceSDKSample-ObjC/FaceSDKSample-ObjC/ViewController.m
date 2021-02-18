@@ -105,8 +105,8 @@
         RGLImage *secondImage = [[RGLImage alloc] initWithImage:self.secondImageView.image];
         secondImage.imageType = self.secondImageView.tag;
         [matchRequestImages addObject: secondImage];
-
-        RGLMatchFacesRequest *request = [[RGLMatchFacesRequest alloc] initWithImages:matchRequestImages similarityThreshold:@0 customMetadata:nil];
+        
+        RGLMatchFacesRequest *request = [[RGLMatchFacesRequest alloc] initWithImages:matchRequestImages];
         
         self.similarityLabel.text = @"Processing...";
         self.matchFacesButton.enabled = NO;
