@@ -40,6 +40,8 @@ class ViewController: UIViewController {
         
         similarityLabel.text = strSimilarity
         livenessLabel.text = strLiveness
+        
+        Face.service.requestInterceptingDelegate = self
     }
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
@@ -74,12 +76,19 @@ class ViewController: UIViewController {
     }
     
     func startFaceCaptureVC(controller: UIViewController, imageView: UIImageView) {
-        Face.service.presentCaptureViewController(from: controller, animated: true, onCapture: { (faceCaptureResponse: FaceCaptureResponse?) in
+        let configuration = FaceCaptureConfiguration {
+            $0.cameraPosition = .front
+            $0.cameraSwitchEnabled = true
+        }
+        
+        Face.service.presentCaptureViewController(from: controller, animated: true, configuration: configuration, onCapture: { (faceCaptureResponse: FaceCaptureResponse?) in
             if let faceCaptureResponse = faceCaptureResponse {
                 if let image = faceCaptureResponse.image {
                     imageView.image = image.image
                     imageView.tag = ImageType.live.rawValue
                 }
+                
+                print(faceCaptureResponse)
             }
         }, completion: nil)
     }
@@ -88,12 +97,12 @@ class ViewController: UIViewController {
         var matchRequestImages = [Image]()
 
         if firtImageView.image != nil && secondImageView.image != nil {
-            let firstImage = Image(image: firtImageView.image!)
-            firstImage.imageType = ImageType(rawValue: firtImageView.tag) ?? .printed
+            let firstImageType = ImageType(rawValue: firtImageView.tag) ?? .printed
+            let firstImage = Image(image: firtImageView.image!, type: firstImageType)
             matchRequestImages.append(firstImage)
 
-            let secondImage = Image(image: secondImageView.image!)
-            secondImage.imageType = ImageType(rawValue: secondImageView.tag) ?? .printed
+            let secondImageType = ImageType(rawValue: secondImageView.tag) ?? .printed
+            let secondImage = Image(image: secondImageView.image!, type: secondImageType)
             matchRequestImages.append(secondImage)
             
             let request = MatchFacesRequest(images: matchRequestImages)
@@ -132,7 +141,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startLiveness(sender: UIButton) {
-        Face.service.startLiveness(from: self, animated: true) { (livenessResponse: LivenessResponse?) in
+        let configuration = LivenessConfiguration {
+            $0.cameraPosition = .front
+            $0.cameraSwitchEnabled = true
+        }
+                
+        Face.service.startLiveness(from: self, animated: true, configuration: configuration) { (livenessResponse: LivenessResponse?) in
             if let livenessResponse = livenessResponse {
                 self.firtImageView.image = livenessResponse.image
                 self.firtImageView.tag = ImageType.live.rawValue
@@ -140,6 +154,8 @@ class ViewController: UIViewController {
                 let livenessStatus = livenessResponse.liveness == .passed ? "Liveness: passed" : "Liveness: unknown"
                 self.livenessLabel.text = livenessStatus
                 self.similarityLabel.text = "Similarity: nil"
+                
+                print(livenessResponse)
             } else {
                 print("No response")
             }
@@ -221,4 +237,16 @@ fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ inp
 
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
     return input.rawValue
+}
+
+extension ViewController: URLRequestInterceptingDelegate {
+    
+    func interceptorPrepare(_ request: URLRequest) -> URLRequest? {
+        var request = request
+        
+        request.addValue("123", forHTTPHeaderField: "Authorization")
+        
+        return request
+    }
+    
 }

@@ -10,7 +10,7 @@
 @import FaceSDK;
 @import Photos;
 
-@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, RGLURLRequestInterceptingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *firtImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondImageView;
@@ -44,6 +44,8 @@
 
     self.similarityLabel.text = @"Similarity: nil";
     self.livenessLabel.text = @"Liveness: nil";
+    
+    RGLFace.service.requestInterceptingDelegate = self;
 }
 
 - (void)imageTapped:(UITapGestureRecognizer *)gesture {
@@ -82,9 +84,14 @@
 }
 
 - (void)startFaceCaptureVC:(UIViewController *)controller imageView:(UIImageView *)imageView {
-    [RGLFace.service presentFaceCaptureViewControllerFrom:self animated:YES onCapture:^(RGLFaceCaptureResponse * _Nullable faceCaptureResponse) {
+    RGLFaceCaptureConfigurationBuilder *builder = [RGLFaceCaptureConfigurationBuilder alloc];
+    builder.cameraPosition = RGLCameraPositionFront;
+    builder.cameraSwitchEnabled = YES;
+    RGLFaceCaptureConfiguration *configuration = [[RGLFaceCaptureConfiguration alloc] initWithBuilder:builder];
+    
+    [RGLFace.service presentFaceCaptureViewControllerFrom:self animated:YES configuration:configuration onCapture:^(RGLFaceCaptureResponse * _Nullable faceCaptureResponse) {
         if (faceCaptureResponse != nil) {
-            RGLImage *image = [[RGLImage alloc] initWithImage:faceCaptureResponse.image.image];
+            RGLImage *image = [[RGLImage alloc] initWithImage:faceCaptureResponse.image.image type:RGLImageTypeLive];
             
             if (image != nil) {
                 imageView.image = image.image;
@@ -98,12 +105,10 @@
     NSMutableArray *matchRequestImages = [[NSMutableArray alloc] init];
 
     if (self.firtImageView.image != nil && self.secondImageView.image != nil) {
-        RGLImage *firstImage = [[RGLImage alloc] initWithImage:self.firtImageView.image];
-        firstImage.imageType = self.firtImageView.tag;
+        RGLImage *firstImage = [[RGLImage alloc] initWithImage:self.firtImageView.image type:self.firtImageView.tag];
         [matchRequestImages addObject: firstImage];
 
-        RGLImage *secondImage = [[RGLImage alloc] initWithImage:self.secondImageView.image];
-        secondImage.imageType = self.secondImageView.tag;
+        RGLImage *secondImage = [[RGLImage alloc] initWithImage:self.secondImageView.image type:self.secondImageView.tag];
         [matchRequestImages addObject: secondImage];
         
         RGLMatchFacesRequest *request = [[RGLMatchFacesRequest alloc] initWithImages:matchRequestImages];
@@ -142,7 +147,12 @@
 }
 
 - (IBAction)startLiveness:(id)sender {
-    [RGLFace.service startLivenessFrom:self animated:YES onLiveness:^(RGLLivenessResponse * _Nonnull livenessResponse) {
+    RGLLivenessConfigurationBuilder *builder = [RGLLivenessConfigurationBuilder alloc];
+    builder.cameraPosition = RGLCameraPositionFront;
+    builder.cameraSwitchEnabled = YES;
+    RGLLivenessConfiguration *configuration = [[RGLLivenessConfiguration alloc] initWithBuilder:builder];
+    
+    [RGLFace.service startLivenessFrom:self animated:YES configuration:configuration onLiveness:^(RGLLivenessResponse * _Nonnull livenessResponse) {
         if (livenessResponse != nil) {
             self.firtImageView.image = livenessResponse.image;
             self.firtImageView.tag = RGLImageTypeLive;
@@ -150,6 +160,8 @@
             NSString *livenessStatus = livenessResponse.liveness == RGLLivenessStatusPassed ? @"Liveness: passed" : @"Liveness: unknown";
             self.livenessLabel.text = livenessStatus;
             self.similarityLabel.text = @"Similarity: nil";
+            
+            NSLog(@"%@", livenessResponse);
         } else {
             NSLog(@"No response");
         }
@@ -214,5 +226,13 @@
     }];
 }
 
+
+- (NSURLRequest * _Nullable)interceptorPrepareRequest:(NSURLRequest * _Nonnull)request {
+    NSMutableURLRequest *interceptedRequest = [request mutableCopy];
+    
+    [interceptedRequest addValue:@"123" forHTTPHeaderField:@"Authorization"];
+        
+    return interceptedRequest;
+}
 
 @end
