@@ -1,0 +1,13 @@
+/* 
+  CustomLocalization.strings
+  Catalog
+
+  Created by Pavel Kondrashkov on 5/20/21.
+  Copyright © 2021 Regula. All rights reserved.
+*/
+
+"faceSDKFitYourFrame" = "Fit inside";
+"faceSDKStayStill" = "Steady";
+"faceSDKProcessing" = "Analyzing...";
+"faceSDKLookStraight" = "Look Straight";
+"faceSDKMoveFartherAway" = "Away";
