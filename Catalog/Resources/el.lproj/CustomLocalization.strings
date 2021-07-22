@@ -1,0 +1,13 @@
+/* 
+  CustomLocalization.strings
+  Catalog
+
+  Created by Pavel Kondrashkov on 5/20/21.
+  Copyright © 2021 Regula. All rights reserved.
+*/
+
+"hint.fit" = "Fit inside";
+"hint.stayStill" = "Steady";
+"hint.lookStraight" = "Look Straight";
+"hint.moveAway" = "Away";
+"livenessProcessing.title.processing" = "Analyzing...";

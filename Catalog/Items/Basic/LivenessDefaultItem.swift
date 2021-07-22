@@ -18,7 +18,7 @@ final class LivenessDefaultItem: CatalogItem {
     }
 
     override func onItemSelected(from viewController: UIViewController) {
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             onLiveness: { [weak self, weak viewController] response in

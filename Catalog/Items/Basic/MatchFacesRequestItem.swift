@@ -151,7 +151,7 @@ final class MatchFacesRequestViewController: UIViewController {
     private func createImageForPosition(_ position: Position, completion: @escaping (Image?) -> Void) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Regula FaceCaptureUI", style: .default, handler: { _ in
-            Face.service.presentCaptureViewController(
+            FaceSDK.service.presentFaceCaptureViewController(
                 from: self,
                 animated: true,
                 onCapture: { response in
@@ -211,7 +211,7 @@ final class MatchFacesRequestViewController: UIViewController {
         self.matchFacesButton.isEnabled = false
         self.clearButton.isEnabled = false
 
-        Face.service.matchFaces(request, completion: { (response: MatchFacesResponse) in
+        FaceSDK.service.matchFaces(request, completion: { (response: MatchFacesResponse) in
             self.matchFacesButton.isEnabled = true
             self.clearButton.isEnabled = true
 

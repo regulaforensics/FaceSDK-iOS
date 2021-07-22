@@ -19,7 +19,7 @@ final class LocalizationHandlerItem: CatalogItem {
 
     override func onItemSelected(from viewController: UIViewController) {
         
-        Face.service.localizationHandler = { localizationKey in
+        FaceSDK.service.localizationHandler = { localizationKey in
             // This will look up localization in `CustomLocalization.strings`.
             let result = NSLocalizedString(localizationKey, tableName: "CustomLocalization", comment: "")
 
@@ -29,7 +29,8 @@ final class LocalizationHandlerItem: CatalogItem {
             }
 
             // Custom key lookup.
-            if localizationKey == "faceSDKMoveCloser" {
+            // You can find all the keys listed in `.strings` located at `FaceSDK.framework/FaceSDK.bundle/` path.
+            if localizationKey == "hint.moveCloser" {
                 return "Handler: Move Closer"
             }
 
@@ -37,13 +38,13 @@ final class LocalizationHandlerItem: CatalogItem {
             return nil
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             onLiveness: { [weak self, weak viewController] response in
                 guard let self = self, let viewController = viewController else { return }
                 self.showLivenessResult(response, from: viewController)
-                Face.service.localizationHandler = nil
+                FaceSDK.service.localizationHandler = nil
             },
             completion: nil
         )

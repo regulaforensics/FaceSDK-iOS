@@ -28,7 +28,7 @@ final class LivenessHideTorchItem: CatalogItem {
             $0.registerClass(Toolbar.self, forBaseClass: CameraToolbarView.self)
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             configuration: configuration,

@@ -18,7 +18,7 @@ final class FaceCaptureDefaultItem: CatalogItem {
     }
 
     override func onItemSelected(from viewController: UIViewController) {
-        Face.service.presentCaptureViewController(
+        FaceSDK.service.presentFaceCaptureViewController(
             from: viewController,
             animated: true,
             onCapture: { [weak self, weak viewController] response in
