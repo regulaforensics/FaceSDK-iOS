@@ -41,7 +41,7 @@ final class LivenessToolbarCustomButtonItem: CatalogItem {
     override init() {
         super.init()
 
-        title = "Liveness CameraToolbarView custom close button."
+        title = "Liveness CameraToolbarView custom close button"
         itemDescription = "Overriden CameraToolbarView class."
         category = .viewCustomization
     }
@@ -51,7 +51,7 @@ final class LivenessToolbarCustomButtonItem: CatalogItem {
             $0.registerClass(Toolbar.self, forBaseClass: CameraToolbarView.self)
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             configuration: configuration,

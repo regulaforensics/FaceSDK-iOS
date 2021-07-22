@@ -19,10 +19,10 @@ final class LivenessAttemptsCountItem: CatalogItem {
 
     override func onItemSelected(from viewController: UIViewController) {
         let configuration = LivenessConfiguration {
-            $0.attemptsCount = 2;
+            $0.attemptsCount = 2
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             configuration: configuration,

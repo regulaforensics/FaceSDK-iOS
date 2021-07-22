@@ -29,7 +29,9 @@ final class CatalogTableDataProvider {
 
             LivenessCameraSwitchItem(),
             LivenessAttemptsCountItem(),
+            LivenessHintAnimationItem(),
             FaceCaptureCameraPositionItem(),
+            FaceCaptureHintAnimationItem(),
 
             LivenessHintViewAppearanceItem(),
             LivenessHintPositionItem(),
@@ -37,6 +39,7 @@ final class CatalogTableDataProvider {
             LivenessToolbarAppearanceItem(),
             LivenessToolbarPositionItem(),
             LivenessToolbarCustomButtonItem(),
+            LivenessToolbarCustomColors(),
             LivenessLogoItem(),
             FaceCaptureBackgroundColor(),
 

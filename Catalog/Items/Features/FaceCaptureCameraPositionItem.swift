@@ -21,8 +21,7 @@ final class FaceCaptureCameraPositionItem: CatalogItem {
         let configuration = FaceCaptureConfiguration {
             $0.cameraPosition = .back
         }
-
-        Face.service.presentCaptureViewController(
+        FaceSDK.service.presentFaceCaptureViewController(
             from: viewController,
             animated: true,
             configuration: configuration,

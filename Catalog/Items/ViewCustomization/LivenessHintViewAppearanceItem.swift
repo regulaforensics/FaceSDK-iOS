@@ -26,7 +26,7 @@ final class LivenessHintViewAppearanceItem: CatalogItem {
         let hintLabelAppearance = UILabel.appearance(whenContainedInInstancesOf: [HintView.self, LivenessContentView.self])
         hintLabelAppearance.font = UIFont(name: "ChalkboardSE-Regular", size: 40)
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             onLiveness: { [weak self, weak viewController] response in

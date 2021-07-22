@@ -42,7 +42,7 @@ final class LivenessLogoItem: CatalogItem {
             $0.registerClass(ContentView.self, forBaseClass: LivenessContentView.self)
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             configuration: configuration,

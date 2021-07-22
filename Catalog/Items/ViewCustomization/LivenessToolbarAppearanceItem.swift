@@ -20,12 +20,9 @@ final class LivenessToolbarAppearanceItem: CatalogItem {
     override func onItemSelected(from viewController: UIViewController) {
         let toolbarAppearance = CameraToolbarView.appearance(whenContainedInInstancesOf: [LivenessContentView.self])
         toolbarAppearance.backgroundColor = .windsor
+        toolbarAppearance.setTintColor(.init(hex: "#84B1CB"), for: .front)
 
-        let toolbarButtonAppearance = UIButton.appearance(whenContainedInInstancesOf: [CameraToolbarView.self, LivenessContentView.self])
-        toolbarButtonAppearance.backgroundColor = .black
-        toolbarButtonAppearance.tintColor = .init(hex: "#84B1CB")
-
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             onLiveness: { [weak self, weak viewController] response in

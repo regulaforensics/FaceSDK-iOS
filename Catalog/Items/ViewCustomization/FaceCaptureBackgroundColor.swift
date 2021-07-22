@@ -13,11 +13,14 @@ final class FaceCaptureBackgroundColor: CatalogItem {
         super.init()
 
         title = "Face Capture background color"
-        itemDescription = "Changes default background color of the overlay."
+        itemDescription = "Changes default background color of the overlay. Only for FaceCapture."
         category = .viewCustomization
     }
 
     override func onItemSelected(from viewController: UIViewController) {
+        // Note: This appearance modification can not be applied to the FaceCapture Liveness Module
+        // because of the security and accuracy constraints.
+
         let appearance = FaceCaptureContentView.appearance()
         appearance.setBackgroundColor(.init(hex: "#FEE9FF"), for: .front)
         appearance.setBackgroundColor(.init(hex: "#6F5685"), for: .rear)
@@ -25,8 +28,7 @@ final class FaceCaptureBackgroundColor: CatalogItem {
         let configuration = FaceCaptureConfiguration {
             $0.cameraSwitchEnabled = true
         }
-
-        Face.service.presentCaptureViewController(
+        FaceSDK.service.presentFaceCaptureViewController(
             from: viewController,
             animated: true,
             configuration: configuration,

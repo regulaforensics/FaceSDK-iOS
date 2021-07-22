@@ -18,7 +18,7 @@ final class URLRequestInterceptorItem: CatalogItem {
     }
 
     override func onItemSelected(from viewController: UIViewController) {
-        let service = Face.service
+        let service = FaceSDK.service
         service.requestInterceptingDelegate = self
         service.startLiveness(
             from: viewController,

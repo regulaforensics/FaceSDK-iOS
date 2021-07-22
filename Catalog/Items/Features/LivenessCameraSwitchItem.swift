@@ -22,7 +22,7 @@ final class LivenessCameraSwitchItem: CatalogItem {
             $0.cameraSwitchEnabled = true
         }
 
-        Face.service.startLiveness(
+        FaceSDK.service.startLiveness(
             from: viewController,
             animated: true,
             configuration: configuration,

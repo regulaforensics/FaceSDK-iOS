@@ -1,9 +1,9 @@
 # FaceSDK Catalog for iOS
 
-[![Version](https://img.shields.io/cocoapods/v/FaceSDKBeta.svg?style=flat)](http://cocoapods.org/pods/FaceSDKBeta)
-[![Platform](https://img.shields.io/cocoapods/p/FaceSDKBeta.svg?style=flat)](http://cocoapods.org/pods/FaceSDKBeta)
+[![Version](https://img.shields.io/cocoapods/v/FaceSDK.svg?style=flat)](http://cocoapods.org/pods/FaceSDK)
+[![Platform](https://img.shields.io/cocoapods/p/FaceSDK.svg?style=flat)](http://cocoapods.org/pods/FaceSDK)
 
-The FaceSDK Catalog is an example app for [FaceSDK iOS](https://docs.regulaforensics.com/ios-face). This project contains various code examples of how to customize and setup FaceSDK for your usecases.
+The FaceSDK Catalog is an example app for [FaceSDK iOS](https://docs.regulaforensics.com/face-sdk/). This project contains various code examples of how to customize and setup FaceSDK for your usecases.
 
 ## Regula FaceSDK
 FaceSDK is a framework that is used for face matching, recognition, and liveness detection.
@@ -24,7 +24,7 @@ pod install
 3. Open the `Catalog.xcworkspace` and run `Catalog` target.
 
 ## Documentation
-Documentation for the API can be found [here](https://docs.regulaforensics.com/ios-face).
+Take a look at our [Documentation](https://docs.regulaforensics.com/face-sdk/) for the API and [Quickstart](https://docs.regulaforensics.com/face-sdk/getting-started/quickstart) guide.
 
 ## Additional information
 If you have any technical questions, feel free to [contact](mailto:ios.support@regulaforensics.com) us or create issues [here](https://github.com/regulaforensics/FaceSDK-iOS/issues).
