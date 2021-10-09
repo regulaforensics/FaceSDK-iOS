@@ -27,8 +27,8 @@
 		86B6D2D42653E84200794170 /* LivenessCameraSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2D32653E84200794170 /* LivenessCameraSwitchItem.swift */; };
 		86B6D2EF26552E3700794170 /* CatalogItem+Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2EE26552E3700794170 /* CatalogItem+Routing.swift */; };
 		86B6D2F226552EF800794170 /* LivenessHintViewAppearanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2F126552EF800794170 /* LivenessHintViewAppearanceItem.swift */; };
-		86C256932682204A00067907 /* CustomLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86C256952682204A00067907 /* CustomLocalization.strings */; };
 		86C2559B2681E34D00067907 /* LivenessToolbarCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2559A2681E34D00067907 /* LivenessToolbarCustomColors.swift */; };
+		86C256932682204A00067907 /* CustomLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86C256952682204A00067907 /* CustomLocalization.strings */; };
 		86CED8F52664E123008CC8AA /* LivenessAttemptsCountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */; };
 		86CED9002664F319008CC8AA /* LivenessHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */; };
 		86CED9032664F376008CC8AA /* FaceCaptureHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */; };
@@ -596,7 +596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCL8G4Q85M;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Catalog/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -620,7 +620,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TCL8G4Q85M;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Catalog/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
