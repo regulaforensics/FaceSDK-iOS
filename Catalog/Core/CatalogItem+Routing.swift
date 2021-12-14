@@ -21,7 +21,7 @@ extension CatalogItem {
     }
 
     func showFaceCaptureResult(_ result: FaceCaptureResponse, from viewController: UIViewController) {
-        if case FaceCaptureDomain.cancelled? = result.error { return }
+        if case FaceCaptureError.cancelled? = result.error { return }
         let resultViewController = result.image
             .map { $0.image }
             .map { ImagesPreviewViewController(images: [$0]) }

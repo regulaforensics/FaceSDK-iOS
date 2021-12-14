@@ -50,8 +50,8 @@ final class MatchFacesRequestViewController: UIViewController {
         return view
     }()
 
-    private var firstImage: Image?
-    private var secondImage: Image?
+    private var firstImage: MatchFacesImage?
+    private var secondImage: MatchFacesImage?
 
     private lazy var matchFacesButton: UIButton = {
         let button = UIButton(type: .system)
@@ -148,27 +148,28 @@ final class MatchFacesRequestViewController: UIViewController {
         }
     }
 
-    private func createImageForPosition(_ position: Position, completion: @escaping (Image?) -> Void) {
+    private func createImageForPosition(_ position: Position, completion: @escaping (MatchFacesImage?) -> Void) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Regula FaceCaptureUI", style: .default, handler: { _ in
             FaceSDK.service.presentFaceCaptureViewController(
                 from: self,
                 animated: true,
                 onCapture: { response in
-                    completion(response.image)
+                    let image = response.image.map { MatchFacesImage(rfsImage: $0) }
+                    completion(image)
                 },
                 completion: nil
             )
         }))
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
             self.pickImage(sourceType: .photoLibrary) { image in
-                let result = image.map { Image(image: $0, type: .printed) }
+                let result = image.map { MatchFacesImage(image: $0, imageType: .printed) }
                 completion(result)
             }
         }))
         alert.addAction(UIAlertAction(title: "Camera Shoot", style: .default, handler: { _ in
             self.pickImage(sourceType: .camera) { image in
-                let result = image.map { Image(image: $0, type: .live) }
+                let result = image.map { MatchFacesImage(image: $0, imageType: .live) }
                 completion(result)
             }
         }))
@@ -220,8 +221,8 @@ final class MatchFacesRequestViewController: UIViewController {
                 return
             }
 
-            if let firstPair = response.matchedFaces.first {
-                let similarity = String(format: "%.5f", firstPair.similarity.doubleValue)
+            if let firstPair = response.results.first {
+                let similarity = String(format: "%.5f", firstPair.similarity?.doubleValue ?? 0.0)
                 self.similarityLabel.text = "Similarity: \(similarity)"
             } else {
                 self.similarityLabel.text = "Similarity: no matched pair found"
