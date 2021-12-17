@@ -54,6 +54,7 @@ final class MatchFacesRequestViewController: UIViewController {
     }()
 
     let secondImageDetectAllSwitch = UISwitch()
+    let thumbnailsSwitch = UISwitch()
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
@@ -127,12 +128,16 @@ final class MatchFacesRequestViewController: UIViewController {
             return label
         }
 
-        let firstDetectAllRow = UIStackView()
-        firstDetectAllRow.spacing = 5
-        firstDetectAllRow.axis = .horizontal
-        firstDetectAllRow.addArrangedSubview(makeOptionLabel(text: "DetectAll"))
-        firstDetectAllRow.addArrangedSubview(firstImageDetectAllSwitch)
+        func makeOptionsRow(text: String, switchView: UISwitch) -> UIView {
+            let row = UIStackView()
+            row.spacing = 5
+            row.axis = .horizontal
+            row.addArrangedSubview(makeOptionLabel(text: text))
+            row.addArrangedSubview(switchView)
+            return row
+        }
 
+        let firstDetectAllRow = makeOptionsRow(text: "DetectAll", switchView: firstImageDetectAllSwitch)
         firstImageView.addSubview(firstDetectAllRow)
         firstDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -141,12 +146,7 @@ final class MatchFacesRequestViewController: UIViewController {
         ])
 
         imagesContainer.addArrangedSubview(secondImageView)
-        let secondDetectAllRow = UIStackView()
-        secondDetectAllRow.spacing = 5
-        secondDetectAllRow.axis = .horizontal
-        secondDetectAllRow.addArrangedSubview(makeOptionLabel(text: "DetectAll"))
-        secondDetectAllRow.addArrangedSubview(secondImageDetectAllSwitch)
-
+        let secondDetectAllRow = makeOptionsRow(text: "DetectAll", switchView: secondImageDetectAllSwitch)
         secondImageView.addSubview(secondDetectAllRow)
         secondDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -156,6 +156,7 @@ final class MatchFacesRequestViewController: UIViewController {
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
+        root.addArrangedSubview(makeOptionsRow(text: "Thumbnails", switchView: thumbnailsSwitch))
         root.addArrangedSubview(matchFacesButton)
         root.addArrangedSubview(clearButton)
     }
@@ -270,6 +271,7 @@ final class MatchFacesRequestViewController: UIViewController {
         }
 
         let request = MatchFacesRequest(images: [firstImage, secondImage])
+        request.thumbnails = thumbnailsSwitch.isOn
 
         self.similarityLabel.text = "Processing..."
         self.matchFacesButton.isEnabled = false
