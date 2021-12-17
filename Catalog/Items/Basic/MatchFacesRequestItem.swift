@@ -8,6 +8,7 @@
 
 import FaceSDK
 import Photos
+import UIKit
 
 final class MatchFacesRequestItem: CatalogItem {
     override init() {
@@ -40,6 +41,8 @@ final class MatchFacesRequestViewController: UIViewController {
         return view
     }()
 
+    let firstImageDetectAllSwitch = UISwitch()
+
     lazy var secondImageView: UIImageView = {
         let view = UIImageView()
         let tapGestureFirst = UITapGestureRecognizer(target: self, action: #selector(self.handleSecondImageTap))
@@ -49,6 +52,8 @@ final class MatchFacesRequestViewController: UIViewController {
         view.backgroundColor = .lightGray
         return view
     }()
+
+    let secondImageDetectAllSwitch = UISwitch()
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
@@ -113,9 +118,41 @@ final class MatchFacesRequestViewController: UIViewController {
         imagesContainer.axis = .vertical
         imagesContainer.distribution = .fillEqually
         imagesContainer.spacing = 45
-
         imagesContainer.addArrangedSubview(firstImageView)
+
+        func makeOptionLabel(text: String) -> UILabel {
+            let label = UILabel()
+            label.text = text
+            label.font = .preferredFont(forTextStyle: .body)
+            return label
+        }
+
+        let firstDetectAllRow = UIStackView()
+        firstDetectAllRow.spacing = 5
+        firstDetectAllRow.axis = .horizontal
+        firstDetectAllRow.addArrangedSubview(makeOptionLabel(text: "DetectAll"))
+        firstDetectAllRow.addArrangedSubview(firstImageDetectAllSwitch)
+
+        firstImageView.addSubview(firstDetectAllRow)
+        firstDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstDetectAllRow.trailingAnchor.constraint(equalTo: firstImageView.trailingAnchor),
+            firstDetectAllRow.bottomAnchor.constraint(equalTo: firstImageView.bottomAnchor)
+        ])
+
         imagesContainer.addArrangedSubview(secondImageView)
+        let secondDetectAllRow = UIStackView()
+        secondDetectAllRow.spacing = 5
+        secondDetectAllRow.axis = .horizontal
+        secondDetectAllRow.addArrangedSubview(makeOptionLabel(text: "DetectAll"))
+        secondDetectAllRow.addArrangedSubview(secondImageDetectAllSwitch)
+
+        secondImageView.addSubview(secondDetectAllRow)
+        secondDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondDetectAllRow.trailingAnchor.constraint(equalTo: secondImageView.trailingAnchor),
+            secondDetectAllRow.bottomAnchor.constraint(equalTo: secondImageView.bottomAnchor)
+        ])
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
@@ -148,6 +185,15 @@ final class MatchFacesRequestViewController: UIViewController {
         }
     }
 
+    private func detectAllOptionValueFor(position: Position) -> Bool {
+        switch position {
+        case .first:
+            return firstImageDetectAllSwitch.isOn
+        case .second:
+            return secondImageDetectAllSwitch.isOn
+        }
+    }
+
     private func createImageForPosition(_ position: Position, completion: @escaping (MatchFacesImage?) -> Void) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Regula FaceCaptureUI", style: .default, handler: { _ in
@@ -155,7 +201,12 @@ final class MatchFacesRequestViewController: UIViewController {
                 from: self,
                 animated: true,
                 onCapture: { response in
-                    let image = response.image.map { MatchFacesImage(rfsImage: $0) }
+                    let image = response.image.map {
+                        MatchFacesImage(
+                            rfsImage: $0,
+                            detectAll: self.detectAllOptionValueFor(position: position)
+                        )
+                    }
                     completion(image)
                 },
                 completion: nil
@@ -163,13 +214,25 @@ final class MatchFacesRequestViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
             self.pickImage(sourceType: .photoLibrary) { image in
-                let result = image.map { MatchFacesImage(image: $0, imageType: .printed) }
+                let result = image.map {
+                    MatchFacesImage(
+                        image: $0,
+                        imageType: .printed,
+                        detectAll: self.detectAllOptionValueFor(position: position)
+                    )
+                }
                 completion(result)
             }
         }))
         alert.addAction(UIAlertAction(title: "Camera Shoot", style: .default, handler: { _ in
             self.pickImage(sourceType: .camera) { image in
-                let result = image.map { MatchFacesImage(image: $0, imageType: .live) }
+                let result = image.map {
+                    MatchFacesImage(
+                        image: $0,
+                        imageType: .live,
+                        detectAll: self.detectAllOptionValueFor(position: position)
+                    )
+                }
                 completion(result)
             }
         }))
@@ -212,6 +275,7 @@ final class MatchFacesRequestViewController: UIViewController {
         self.matchFacesButton.isEnabled = false
         self.clearButton.isEnabled = false
 
+        FaceSDK.service.serviceURL = "https://faceapi-test.regulaforensics.com"
         FaceSDK.service.matchFaces(request, completion: { (response: MatchFacesResponse) in
             self.matchFacesButton.isEnabled = true
             self.clearButton.isEnabled = true
