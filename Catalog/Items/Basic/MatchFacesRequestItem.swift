@@ -277,7 +277,6 @@ final class MatchFacesRequestViewController: UIViewController {
         self.matchFacesButton.isEnabled = false
         self.clearButton.isEnabled = false
 
-        FaceSDK.service.serviceURL = "https://faceapi-test.regulaforensics.com"
         FaceSDK.service.matchFaces(request, completion: { (response: MatchFacesResponse) in
             self.matchFacesButton.isEnabled = true
             self.clearButton.isEnabled = true
