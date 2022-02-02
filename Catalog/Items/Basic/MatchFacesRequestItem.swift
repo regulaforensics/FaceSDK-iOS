@@ -8,6 +8,7 @@
 
 import FaceSDK
 import Photos
+import UIKit
 
 final class MatchFacesRequestItem: CatalogItem {
     override init() {
@@ -40,6 +41,8 @@ final class MatchFacesRequestViewController: UIViewController {
         return view
     }()
 
+    let firstImageDetectAllSwitch = UISwitch()
+
     lazy var secondImageView: UIImageView = {
         let view = UIImageView()
         let tapGestureFirst = UITapGestureRecognizer(target: self, action: #selector(self.handleSecondImageTap))
@@ -50,8 +53,11 @@ final class MatchFacesRequestViewController: UIViewController {
         return view
     }()
 
-    private var firstImage: Image?
-    private var secondImage: Image?
+    let secondImageDetectAllSwitch = UISwitch()
+    let thumbnailsSwitch = UISwitch()
+
+    private var firstImage: MatchFacesImage?
+    private var secondImage: MatchFacesImage?
 
     private lazy var matchFacesButton: UIButton = {
         let button = UIButton(type: .system)
@@ -113,12 +119,44 @@ final class MatchFacesRequestViewController: UIViewController {
         imagesContainer.axis = .vertical
         imagesContainer.distribution = .fillEqually
         imagesContainer.spacing = 45
-
         imagesContainer.addArrangedSubview(firstImageView)
+
+        func makeOptionLabel(text: String) -> UILabel {
+            let label = UILabel()
+            label.text = text
+            label.font = .preferredFont(forTextStyle: .body)
+            return label
+        }
+
+        func makeOptionsRow(text: String, switchView: UISwitch) -> UIView {
+            let row = UIStackView()
+            row.spacing = 5
+            row.axis = .horizontal
+            row.addArrangedSubview(makeOptionLabel(text: text))
+            row.addArrangedSubview(switchView)
+            return row
+        }
+
+        let firstDetectAllRow = makeOptionsRow(text: "DetectAll", switchView: firstImageDetectAllSwitch)
+        firstImageView.addSubview(firstDetectAllRow)
+        firstDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstDetectAllRow.trailingAnchor.constraint(equalTo: firstImageView.trailingAnchor),
+            firstDetectAllRow.bottomAnchor.constraint(equalTo: firstImageView.bottomAnchor)
+        ])
+
         imagesContainer.addArrangedSubview(secondImageView)
+        let secondDetectAllRow = makeOptionsRow(text: "DetectAll", switchView: secondImageDetectAllSwitch)
+        secondImageView.addSubview(secondDetectAllRow)
+        secondDetectAllRow.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondDetectAllRow.trailingAnchor.constraint(equalTo: secondImageView.trailingAnchor),
+            secondDetectAllRow.bottomAnchor.constraint(equalTo: secondImageView.bottomAnchor)
+        ])
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
+        root.addArrangedSubview(makeOptionsRow(text: "Thumbnails", switchView: thumbnailsSwitch))
         root.addArrangedSubview(matchFacesButton)
         root.addArrangedSubview(clearButton)
     }
@@ -148,27 +186,54 @@ final class MatchFacesRequestViewController: UIViewController {
         }
     }
 
-    private func createImageForPosition(_ position: Position, completion: @escaping (Image?) -> Void) {
+    private func detectAllOptionValueFor(position: Position) -> Bool {
+        switch position {
+        case .first:
+            return firstImageDetectAllSwitch.isOn
+        case .second:
+            return secondImageDetectAllSwitch.isOn
+        }
+    }
+
+    private func createImageForPosition(_ position: Position, completion: @escaping (MatchFacesImage?) -> Void) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Regula FaceCaptureUI", style: .default, handler: { _ in
             FaceSDK.service.presentFaceCaptureViewController(
                 from: self,
                 animated: true,
                 onCapture: { response in
-                    completion(response.image)
+                    let image = response.image.map {
+                        MatchFacesImage(
+                            rfsImage: $0,
+                            detectAll: self.detectAllOptionValueFor(position: position)
+                        )
+                    }
+                    completion(image)
                 },
                 completion: nil
             )
         }))
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
             self.pickImage(sourceType: .photoLibrary) { image in
-                let result = image.map { Image(image: $0, type: .printed) }
+                let result = image.map {
+                    MatchFacesImage(
+                        image: $0,
+                        imageType: .printed,
+                        detectAll: self.detectAllOptionValueFor(position: position)
+                    )
+                }
                 completion(result)
             }
         }))
         alert.addAction(UIAlertAction(title: "Camera Shoot", style: .default, handler: { _ in
             self.pickImage(sourceType: .camera) { image in
-                let result = image.map { Image(image: $0, type: .live) }
+                let result = image.map {
+                    MatchFacesImage(
+                        image: $0,
+                        imageType: .live,
+                        detectAll: self.detectAllOptionValueFor(position: position)
+                    )
+                }
                 completion(result)
             }
         }))
@@ -206,6 +271,7 @@ final class MatchFacesRequestViewController: UIViewController {
         }
 
         let request = MatchFacesRequest(images: [firstImage, secondImage])
+        request.thumbnails = thumbnailsSwitch.isOn
 
         self.similarityLabel.text = "Processing..."
         self.matchFacesButton.isEnabled = false
@@ -220,8 +286,8 @@ final class MatchFacesRequestViewController: UIViewController {
                 return
             }
 
-            if let firstPair = response.matchedFaces.first {
-                let similarity = String(format: "%.5f", firstPair.similarity.doubleValue)
+            if let firstPair = response.results.first {
+                let similarity = String(format: "%.5f", firstPair.similarity?.doubleValue ?? 0.0)
                 self.similarityLabel.text = "Similarity: \(similarity)"
             } else {
                 self.similarityLabel.text = "Similarity: no matched pair found"
@@ -243,48 +309,48 @@ final class MatchFacesRequestViewController: UIViewController {
 
     private func pickImage(sourceType: UIImagePickerController.SourceType, completion: @escaping ((UIImage?) -> Void)) {
         PHPhotoLibrary.requestAuthorization { (status) in
-            switch status {
-            case .authorized:
-                if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-                    DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch status {
+                case .authorized:
+                    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
                         self.imagePickerCompletion = completion
-
                         let imagePicker = UIImagePickerController()
                         imagePicker.delegate = self
                         imagePicker.sourceType = sourceType
                         imagePicker.allowsEditing = false
                         imagePicker.navigationBar.tintColor = .black
                         self.present(imagePicker, animated: true, completion: nil)
-                    }
-                } else {
-                    completion(nil)
-                }
-            case .denied:
-                let message = NSLocalizedString("Application doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the gallery")
-                let alertController = UIAlertController(title: NSLocalizedString("Gallery Unavailable", comment: "Alert eror title"), message: message, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert manager, OK button tittle"), style: .cancel, handler: nil))
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { action in
-                    guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+
                     } else {
-                        UIApplication.shared.openURL(settingsURL)
+                        completion(nil)
                     }
-                }))
-                self.present(alertController, animated: true, completion: nil)
-                print("PHPhotoLibrary status: denied")
-                completion(nil)
-            case .notDetermined:
-                print("PHPhotoLibrary status: notDetermined")
-                completion(nil)
-            case .restricted:
-                print("PHPhotoLibrary status: restricted")
-                completion(nil)
-            case .limited:
-                print("PHPhotoLibrary status: Limited")
-                completion(nil)
-            @unknown default:
-                fatalError()
+                case .denied:
+                    let message = NSLocalizedString("Application doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the gallery")
+                    let alertController = UIAlertController(title: NSLocalizedString("Gallery Unavailable", comment: "Alert eror title"), message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert manager, OK button tittle"), style: .cancel, handler: nil))
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { action in
+                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(settingsURL)
+                        }
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                    print("PHPhotoLibrary status: denied")
+                    completion(nil)
+                case .notDetermined:
+                    print("PHPhotoLibrary status: notDetermined")
+                    completion(nil)
+                case .restricted:
+                    print("PHPhotoLibrary status: restricted")
+                    completion(nil)
+                case .limited:
+                    print("PHPhotoLibrary status: Limited")
+                    completion(nil)
+                @unknown default:
+                    fatalError()
+                }
             }
         }
     }
