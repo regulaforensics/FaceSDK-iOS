@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-platform :ios, '12.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'Catalog' do
