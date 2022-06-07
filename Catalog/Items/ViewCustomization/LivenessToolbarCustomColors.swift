@@ -38,7 +38,7 @@ final class LivenessToolbarCustomColors: CatalogItem {
 
     override func onItemSelected(from viewController: UIViewController) {
         let configuration = LivenessConfiguration {
-            $0.cameraSwitchEnabled = true
+            $0.isCameraSwitchButtonEnabled = true
             $0.registerClass(Toolbar.self, forBaseClass: CameraToolbarView.self)
         }
 

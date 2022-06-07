@@ -26,7 +26,7 @@ final class FaceCaptureBackgroundColor: CatalogItem {
         appearance.setBackgroundColor(.init(hex: "#6F5685"), for: .rear)
 
         let configuration = FaceCaptureConfiguration {
-            $0.cameraSwitchEnabled = true
+            $0.isCameraSwitchButtonEnabled = true
         }
         FaceSDK.service.presentFaceCaptureViewController(
             from: viewController,

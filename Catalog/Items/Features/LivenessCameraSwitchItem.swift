@@ -19,7 +19,7 @@ final class LivenessCameraSwitchItem: CatalogItem {
 
     override func onItemSelected(from viewController: UIViewController) {
         let configuration = LivenessConfiguration {
-            $0.cameraSwitchEnabled = true
+            $0.isCameraSwitchButtonEnabled = true
         }
 
         FaceSDK.service.startLiveness(
