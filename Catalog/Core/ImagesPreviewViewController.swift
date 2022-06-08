@@ -64,7 +64,7 @@ final class ImagesPreviewViewController: UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
         ])
 
-        nextButton.isHidden = images.count < 2
+        nextButton.isHidden = images.isEmpty
     }
 
     override func viewDidLoad() {
