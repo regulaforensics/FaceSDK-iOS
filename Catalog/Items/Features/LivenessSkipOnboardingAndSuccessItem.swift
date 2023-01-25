@@ -1,31 +1,25 @@
 //
-//  LivenessHideTorchItem.swift
+//  LivenessSkipOnboardingAndSuccessItem.swift
 //  Catalog
 //
-//  Created by Pavel Kondrashkov on 5/19/21.
-//  Copyright © 2021 Regula. All rights reserved.
+//  Created by Dmitry Evglevsky on 25.01.23.
+//  Copyright © 2023 Regula. All rights reserved.
 //
 
 import FaceSDK
 
-final class LivenessHideTorchItem: CatalogItem {
+final class LivenessSkipOnboardingAndSuccessItem: CatalogItem {
     override init() {
         super.init()
 
-        title = "Liveness CameraToolbarView hide torch button"
-        itemDescription = "Subclassing API usage example."
-        category = .viewCustomization
-    }
-
-    final class Toolbar: CameraToolbarView {
-        override var torchButton: UIButton? { return nil }
+        title = "Skip Onboarding & Success steps"
+        itemDescription = "Liveness will not show onboarding & success screens."
+        category = .feature
     }
 
     override func onItemSelected(from viewController: UIViewController) {
         let configuration = LivenessConfiguration {
-            $0.cameraPosition = .back
-            $0.isCameraSwitchButtonEnabled = true
-            $0.registerClass(Toolbar.self, forBaseClass: CameraToolbarView.self)
+            $0.stepSkippingMask = [.onboarding, .success]
         }
 
         FaceSDK.service.startLiveness(
@@ -40,4 +34,3 @@ final class LivenessHideTorchItem: CatalogItem {
         )
     }
 }
-
