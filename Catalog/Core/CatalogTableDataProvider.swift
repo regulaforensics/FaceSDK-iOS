@@ -28,9 +28,7 @@ final class CatalogTableDataProvider {
             MatchFacesRequestItem(),
 
             LivenessAttemptsCountItem(),
-            LivenessHintAnimationItem(),
             FaceCaptureCameraPositionItem(),
-            FaceCaptureHintAnimationItem(),
             FaceCaptureHideTorchConfigurationItem(),
             LivenessSkipOnboardingAndSuccessItem(),
 

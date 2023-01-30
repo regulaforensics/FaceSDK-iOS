@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FaceSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,15 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             window.makeKeyAndVisible()
         }
-        
-        FaceSDK.service.initialize { success, error in
-            if error == nil {
-                print("FaceSDK initialized.")
-            } else {
-                print(error?.localizedDescription ?? "")
-            }
-        }
-        
         return true
     }
 

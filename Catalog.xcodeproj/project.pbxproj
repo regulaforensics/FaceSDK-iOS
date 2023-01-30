@@ -28,8 +28,6 @@
 		86C2559B2681E34D00067907 /* LivenessToolbarCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2559A2681E34D00067907 /* LivenessToolbarCustomColors.swift */; };
 		86C256932682204A00067907 /* CustomLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86C256952682204A00067907 /* CustomLocalization.strings */; };
 		86CED8F52664E123008CC8AA /* LivenessAttemptsCountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */; };
-		86CED9002664F319008CC8AA /* LivenessHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */; };
-		86CED9032664F376008CC8AA /* FaceCaptureHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */; };
 		86D5E285266116B80076D417 /* LivenessHintPositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E284266116B80076D417 /* LivenessHintPositionItem.swift */; };
 		86D5E289266118400076D417 /* LivenessToolbarAppearanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E288266118400076D417 /* LivenessToolbarAppearanceItem.swift */; };
 		86D5E28D26611A690076D417 /* LivenessToolbarPositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E28C26611A690076D417 /* LivenessToolbarPositionItem.swift */; };
@@ -74,8 +72,6 @@
 		86C2569A2682205100067907 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86C2569B2682205200067907 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessAttemptsCountItem.swift; sourceTree = "<group>"; };
-		86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessHintAnimationItem.swift; sourceTree = "<group>"; };
-		86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCaptureHintAnimationItem.swift; sourceTree = "<group>"; };
 		86D0D0D626835EC2000269B1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/CustomLocalization.strings; sourceTree = "<group>"; };
 		86D0D0D726835ED0000269B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86D0D0D826835EDC000269B1 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/CustomLocalization.strings; sourceTree = "<group>"; };
@@ -143,9 +139,7 @@
 			children = (
 				9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */,
 				86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */,
-				86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */,
 				86B2D28526555AF200D85D45 /* FaceCaptureCameraPositionItem.swift */,
-				86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */,
 				9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */,
 			);
 			path = Features;
@@ -421,13 +415,11 @@
 				86B6D29E2653D50500794170 /* AppDelegate.swift in Sources */,
 				86C2559B2681E34D00067907 /* LivenessToolbarCustomColors.swift in Sources */,
 				86B6D2A02653D50500794170 /* SceneDelegate.swift in Sources */,
-				86CED9032664F376008CC8AA /* FaceCaptureHintAnimationItem.swift in Sources */,
 				9DE86D922850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift in Sources */,
 				86951B542657E30D00FB23D8 /* UIColor+Hex.swift in Sources */,
 				86D5E28D26611A690076D417 /* LivenessToolbarPositionItem.swift in Sources */,
 				8611D4442657A47000E4E700 /* ImagesPreviewViewController.swift in Sources */,
 				86D5E29026611CFE0076D417 /* LivenessToolbarCustomButtonItem.swift in Sources */,
-				86CED9002664F319008CC8AA /* LivenessHintAnimationItem.swift in Sources */,
 				86133D6D26568D6B00546D8A /* MatchFacesRequestItem.swift in Sources */,
 				86B2D28626555AF200D85D45 /* FaceCaptureCameraPositionItem.swift in Sources */,
 				86D5E289266118400076D417 /* LivenessToolbarAppearanceItem.swift in Sources */,
