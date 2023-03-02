@@ -16,7 +16,7 @@ final class LivenessToolbarPositionItem: CatalogItem {
             NSLayoutConstraint.activate([
                 toolbarView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 toolbarView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                toolbarView.topAnchor.constraint(equalTo: topAnchor),
+                toolbarView.topAnchor.constraint(equalTo: bottomAnchor, constant: -200),
             ])
 
             hintView.translatesAutoresizingMaskIntoConstraints = false

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FaceSDK
 
 final class CatalogViewController: UIViewController {
     private let tableDataProvider = CatalogTableDataProvider()
@@ -32,6 +33,14 @@ final class CatalogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FaceSDK.service.initialize { success, error in
+            if error == nil {
+                print("FaceSDK initialized.")
+            } else {
+                print(error?.localizedDescription ?? "")
+            }
+        }
 
         title = "FaceSDK Catalog"
         if #available(iOS 11.0, *) {

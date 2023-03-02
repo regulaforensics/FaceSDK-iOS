@@ -15,7 +15,6 @@
 		86951B512657DF6B00FB23D8 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86951B502657DF6B00FB23D8 /* UIColor+Palette.swift */; };
 		86951B542657E30D00FB23D8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86951B532657E30D00FB23D8 /* UIColor+Hex.swift */; };
 		86B2D27C2655568400D85D45 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2D27B2655568400D85D45 /* UIView+Layout.swift */; };
-		86B2D2802655593600D85D45 /* LivenessHideTorchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2D27F2655593600D85D45 /* LivenessHideTorchItem.swift */; };
 		86B2D28626555AF200D85D45 /* FaceCaptureCameraPositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2D28526555AF200D85D45 /* FaceCaptureCameraPositionItem.swift */; };
 		86B2D28B26555BCE00D85D45 /* LocalizationHandlerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2D28A26555BCE00D85D45 /* LocalizationHandlerItem.swift */; };
 		86B6D29E2653D50500794170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D29D2653D50500794170 /* AppDelegate.swift */; };
@@ -24,14 +23,11 @@
 		86B6D2C12653DA7C00794170 /* RFCCatalogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2C02653DA7C00794170 /* RFCCatalogItem.m */; };
 		86B6D2CA2653DD9C00794170 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2C92653DD9C00794170 /* CatalogViewController.swift */; };
 		86B6D2D02653E68C00794170 /* CatalogTableDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2CF2653E68C00794170 /* CatalogTableDataProvider.swift */; };
-		86B6D2D42653E84200794170 /* LivenessCameraSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2D32653E84200794170 /* LivenessCameraSwitchItem.swift */; };
 		86B6D2EF26552E3700794170 /* CatalogItem+Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2EE26552E3700794170 /* CatalogItem+Routing.swift */; };
 		86B6D2F226552EF800794170 /* LivenessHintViewAppearanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B6D2F126552EF800794170 /* LivenessHintViewAppearanceItem.swift */; };
 		86C2559B2681E34D00067907 /* LivenessToolbarCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C2559A2681E34D00067907 /* LivenessToolbarCustomColors.swift */; };
 		86C256932682204A00067907 /* CustomLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86C256952682204A00067907 /* CustomLocalization.strings */; };
 		86CED8F52664E123008CC8AA /* LivenessAttemptsCountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */; };
-		86CED9002664F319008CC8AA /* LivenessHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */; };
-		86CED9032664F376008CC8AA /* FaceCaptureHintAnimationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */; };
 		86D5E285266116B80076D417 /* LivenessHintPositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E284266116B80076D417 /* LivenessHintPositionItem.swift */; };
 		86D5E289266118400076D417 /* LivenessToolbarAppearanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E288266118400076D417 /* LivenessToolbarAppearanceItem.swift */; };
 		86D5E28D26611A690076D417 /* LivenessToolbarPositionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E28C26611A690076D417 /* LivenessToolbarPositionItem.swift */; };
@@ -39,9 +35,8 @@
 		86D5E2A1266123480076D417 /* LivenessLogoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E2A0266123480076D417 /* LivenessLogoItem.swift */; };
 		86D5E2A7266128160076D417 /* FaceCaptureBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D5E2A6266128160076D417 /* FaceCaptureBackgroundColor.swift */; };
 		86E7479A265D2AB500767F52 /* URLRequestInterceptorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E74799265D2AB500767F52 /* URLRequestInterceptorItem.swift */; };
-		9DE86D912850820400FCC18C /* LivenessHideTorchConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86D8F2850820400FCC18C /* LivenessHideTorchConfigurationItem.swift */; };
+		9DC35FC2298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */; };
 		9DE86D922850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */; };
-		9DE86D942850820C00FCC18C /* LivenessProcessAndRetryCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86D932850820C00FCC18C /* LivenessProcessAndRetryCustomization.swift */; };
 		F1D3B0BD2ECCF5ED96E71FEB /* Pods_Catalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DBE93D03DA4D5B36021E6A /* Pods_Catalog.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +50,6 @@
 		86951B502657DF6B00FB23D8 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		86951B532657E30D00FB23D8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		86B2D27B2655568400D85D45 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
-		86B2D27F2655593600D85D45 /* LivenessHideTorchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessHideTorchItem.swift; sourceTree = "<group>"; };
 		86B2D28526555AF200D85D45 /* FaceCaptureCameraPositionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCaptureCameraPositionItem.swift; sourceTree = "<group>"; };
 		86B2D28A26555BCE00D85D45 /* LocalizationHandlerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHandlerItem.swift; sourceTree = "<group>"; };
 		86B6D29A2653D50500794170 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +62,6 @@
 		86B6D2C02653DA7C00794170 /* RFCCatalogItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFCCatalogItem.m; sourceTree = "<group>"; };
 		86B6D2C92653DD9C00794170 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		86B6D2CF2653E68C00794170 /* CatalogTableDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableDataProvider.swift; sourceTree = "<group>"; };
-		86B6D2D32653E84200794170 /* LivenessCameraSwitchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessCameraSwitchItem.swift; sourceTree = "<group>"; };
 		86B6D2EE26552E3700794170 /* CatalogItem+Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatalogItem+Routing.swift"; sourceTree = "<group>"; };
 		86B6D2F126552EF800794170 /* LivenessHintViewAppearanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessHintViewAppearanceItem.swift; sourceTree = "<group>"; };
 		86C2559A2681E34D00067907 /* LivenessToolbarCustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessToolbarCustomColors.swift; sourceTree = "<group>"; };
@@ -79,8 +72,6 @@
 		86C2569A2682205100067907 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86C2569B2682205200067907 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessAttemptsCountItem.swift; sourceTree = "<group>"; };
-		86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessHintAnimationItem.swift; sourceTree = "<group>"; };
-		86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCaptureHintAnimationItem.swift; sourceTree = "<group>"; };
 		86D0D0D626835EC2000269B1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/CustomLocalization.strings; sourceTree = "<group>"; };
 		86D0D0D726835ED0000269B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomLocalization.strings"; sourceTree = "<group>"; };
 		86D0D0D826835EDC000269B1 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/CustomLocalization.strings; sourceTree = "<group>"; };
@@ -107,9 +98,8 @@
 		86D5E2A0266123480076D417 /* LivenessLogoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessLogoItem.swift; sourceTree = "<group>"; };
 		86D5E2A6266128160076D417 /* FaceCaptureBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCaptureBackgroundColor.swift; sourceTree = "<group>"; };
 		86E74799265D2AB500767F52 /* URLRequestInterceptorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestInterceptorItem.swift; sourceTree = "<group>"; };
-		9DE86D8F2850820400FCC18C /* LivenessHideTorchConfigurationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivenessHideTorchConfigurationItem.swift; sourceTree = "<group>"; };
+		9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessSkipOnboardingAndSuccessItem.swift; sourceTree = "<group>"; };
 		9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureHideTorchConfigurationItem.swift; sourceTree = "<group>"; };
-		9DE86D932850820C00FCC18C /* LivenessProcessAndRetryCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivenessProcessAndRetryCustomization.swift; sourceTree = "<group>"; };
 		D1DBE93D03DA4D5B36021E6A /* Pods_Catalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE68E96211232EE8DBF2FE18 /* Pods-Catalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catalog.release.xcconfig"; path = "Target Support Files/Pods-Catalog/Pods-Catalog.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,12 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */,
-				9DE86D8F2850820400FCC18C /* LivenessHideTorchConfigurationItem.swift */,
-				86B6D2D32653E84200794170 /* LivenessCameraSwitchItem.swift */,
 				86CED8F42664E123008CC8AA /* LivenessAttemptsCountItem.swift */,
-				86CED8FF2664F319008CC8AA /* LivenessHintAnimationItem.swift */,
 				86B2D28526555AF200D85D45 /* FaceCaptureCameraPositionItem.swift */,
-				86CED9022664F376008CC8AA /* FaceCaptureHintAnimationItem.swift */,
+				9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -247,14 +234,12 @@
 		86B6D2F62655306500794170 /* ViewCustomization */ = {
 			isa = PBXGroup;
 			children = (
-				9DE86D932850820C00FCC18C /* LivenessProcessAndRetryCustomization.swift */,
 				86B6D2F126552EF800794170 /* LivenessHintViewAppearanceItem.swift */,
 				86D5E284266116B80076D417 /* LivenessHintPositionItem.swift */,
 				86D5E288266118400076D417 /* LivenessToolbarAppearanceItem.swift */,
 				86D5E28C26611A690076D417 /* LivenessToolbarPositionItem.swift */,
 				86D5E28F26611CFE0076D417 /* LivenessToolbarCustomButtonItem.swift */,
 				86C2559A2681E34D00067907 /* LivenessToolbarCustomColors.swift */,
-				86B2D27F2655593600D85D45 /* LivenessHideTorchItem.swift */,
 				86D5E2A0266123480076D417 /* LivenessLogoItem.swift */,
 				86D5E2A6266128160076D417 /* FaceCaptureBackgroundColor.swift */,
 			);
@@ -416,32 +401,27 @@
 				86B6D2CA2653DD9C00794170 /* CatalogViewController.swift in Sources */,
 				86133D5126565DD600546D8A /* LivenessDefaultItem.swift in Sources */,
 				86B6D2EF26552E3700794170 /* CatalogItem+Routing.swift in Sources */,
+				9DC35FC2298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift in Sources */,
 				86B2D27C2655568400D85D45 /* UIView+Layout.swift in Sources */,
 				86B6D2C12653DA7C00794170 /* RFCCatalogItem.m in Sources */,
 				86D5E2A7266128160076D417 /* FaceCaptureBackgroundColor.swift in Sources */,
 				86B6D2F226552EF800794170 /* LivenessHintViewAppearanceItem.swift in Sources */,
 				86D5E285266116B80076D417 /* LivenessHintPositionItem.swift in Sources */,
 				86D5E2A1266123480076D417 /* LivenessLogoItem.swift in Sources */,
-				9DE86D912850820400FCC18C /* LivenessHideTorchConfigurationItem.swift in Sources */,
 				86133D5426565E2B00546D8A /* FaceCaptureDefaultItem.swift in Sources */,
 				86B2D28B26555BCE00D85D45 /* LocalizationHandlerItem.swift in Sources */,
-				86B2D2802655593600D85D45 /* LivenessHideTorchItem.swift in Sources */,
-				9DE86D942850820C00FCC18C /* LivenessProcessAndRetryCustomization.swift in Sources */,
 				86E7479A265D2AB500767F52 /* URLRequestInterceptorItem.swift in Sources */,
 				86CED8F52664E123008CC8AA /* LivenessAttemptsCountItem.swift in Sources */,
 				86B6D29E2653D50500794170 /* AppDelegate.swift in Sources */,
 				86C2559B2681E34D00067907 /* LivenessToolbarCustomColors.swift in Sources */,
 				86B6D2A02653D50500794170 /* SceneDelegate.swift in Sources */,
-				86CED9032664F376008CC8AA /* FaceCaptureHintAnimationItem.swift in Sources */,
 				9DE86D922850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift in Sources */,
 				86951B542657E30D00FB23D8 /* UIColor+Hex.swift in Sources */,
 				86D5E28D26611A690076D417 /* LivenessToolbarPositionItem.swift in Sources */,
 				8611D4442657A47000E4E700 /* ImagesPreviewViewController.swift in Sources */,
 				86D5E29026611CFE0076D417 /* LivenessToolbarCustomButtonItem.swift in Sources */,
-				86CED9002664F319008CC8AA /* LivenessHintAnimationItem.swift in Sources */,
 				86133D6D26568D6B00546D8A /* MatchFacesRequestItem.swift in Sources */,
 				86B2D28626555AF200D85D45 /* FaceCaptureCameraPositionItem.swift in Sources */,
-				86B6D2D42653E84200794170 /* LivenessCameraSwitchItem.swift in Sources */,
 				86D5E289266118400076D417 /* LivenessToolbarAppearanceItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

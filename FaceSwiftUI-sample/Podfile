@@ -1,0 +1,11 @@
+source 'http://gitlab.regula.local/mobile-sdk/podspecs.git'
+source 'https://cdn.cocoapods.org/'
+
+target 'FaceSwiftUI-sample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for FaceSwiftUI-sample
+  pod 'FaceCoreSDKBeta', '0.1.302'
+  pod 'FaceSDKBeta', '5.1.1317'
+end

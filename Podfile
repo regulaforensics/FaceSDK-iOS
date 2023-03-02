@@ -4,5 +4,6 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'Catalog' do
-  pod 'FaceSDK', '~> 4.1'
+  pod 'FaceSDK', '~> 5.1'
+  pod 'FaceCoreSDK', '~> 5.1'
 end
