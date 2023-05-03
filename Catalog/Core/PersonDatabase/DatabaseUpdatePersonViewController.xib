@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatabaseUpdatePersonViewController" customModule="Catalog" customModuleProvider="target">
+            <connections>
+                <outlet property="addImageButton" destination="ugH-EA-DEY" id="b4y-z6-Og2"/>
+                <outlet property="collectionView" destination="Wmi-Wx-RV8" id="Pgw-Rw-Aa2"/>
+                <outlet property="loadingIndicator" destination="DKj-3D-Iia" id="Tp4-iF-QJ8"/>
+                <outlet property="nameTextField" destination="Ua9-6y-woi" id="SE8-lW-xxr"/>
+                <outlet property="surnameTextField" destination="aca-sF-gVT" id="8HV-96-0Lv"/>
+                <outlet property="updatePersonButton" destination="buk-N4-OnK" id="xkE-PR-WlL"/>
+                <outlet property="view" destination="J1H-aP-uxi" id="ul4-Mt-OmT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="J1H-aP-uxi">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-nJ-J1x">
+                    <rect key="frame" x="0.0" y="79" width="383" height="155"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ua9-6y-woi">
+                            <rect key="frame" x="48" y="0.0" width="287" height="37.666666666666664"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37.670000000000002" id="FEo-Nk-Xvc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="fhg-Xz-QBN"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aca-sF-gVT">
+                            <rect key="frame" x="48" y="52.666666666666657" width="287" height="37.333333333333343"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37.329999999999998" id="oCV-7U-hy1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="FHS-t2-ppH"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-EA-DEY">
+                            <rect key="frame" x="48" y="105" width="287" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="s1b-Gw-LGB"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Add Person Image">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" name="windsor"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapAddPersonImage:" destination="-1" eventType="touchUpInside" id="ZmM-dC-nKL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="aca-sF-gVT" firstAttribute="width" secondItem="HVh-nJ-J1x" secondAttribute="width" multiplier="0.75" id="pcS-Db-0du"/>
+                        <constraint firstItem="Ua9-6y-woi" firstAttribute="width" secondItem="HVh-nJ-J1x" secondAttribute="width" multiplier="0.75" id="sgF-7L-hbD"/>
+                        <constraint firstItem="ugH-EA-DEY" firstAttribute="width" secondItem="HVh-nJ-J1x" secondAttribute="width" multiplier="0.75" id="txa-Gt-Phm"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s6b-Lw-shR">
+                    <rect key="frame" x="0.0" y="244" width="393" height="574"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q37-cx-sTW">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="574"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wmi-Wx-RV8">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="494"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="wOO-hX-Q6R">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="q1E-SL-YOo"/>
+                                        <outlet property="delegate" destination="-1" id="fjM-NK-gZB"/>
+                                    </connections>
+                                </collectionView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siF-qd-jRY">
+                                    <rect key="frame" x="0.0" y="504" width="393" height="70"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buk-N4-OnK">
+                                            <rect key="frame" x="49" y="10" width="295" height="50"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Update Person">
+                                                <backgroundConfiguration key="background">
+                                                    <color key="backgroundColor" name="windsor"/>
+                                                </backgroundConfiguration>
+                                                <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="didTapUpdatePerson:" destination="-1" eventType="touchUpInside" id="kZK-ZJ-naD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="buk-N4-OnK" secondAttribute="bottom" constant="10" id="BiY-V6-dGo"/>
+                                        <constraint firstItem="buk-N4-OnK" firstAttribute="centerX" secondItem="siF-qd-jRY" secondAttribute="centerX" id="KUd-PN-tRJ"/>
+                                        <constraint firstItem="buk-N4-OnK" firstAttribute="width" secondItem="siF-qd-jRY" secondAttribute="width" multiplier="0.75" id="SM4-aS-W3N"/>
+                                        <constraint firstItem="buk-N4-OnK" firstAttribute="top" secondItem="siF-qd-jRY" secondAttribute="top" constant="10" id="ev0-H3-jLe"/>
+                                        <constraint firstAttribute="height" constant="70" id="gki-Ok-Ha6"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <variation key="heightClass=compact-widthClass=regular" distribution="fillEqually"/>
+                </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="DKj-3D-Iia">
+                    <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="nqZ-8F-ccC"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="HVh-nJ-J1x" firstAttribute="top" secondItem="nqZ-8F-ccC" secondAttribute="top" constant="20" id="7GD-sx-GGP"/>
+                <constraint firstItem="DKj-3D-Iia" firstAttribute="centerY" secondItem="J1H-aP-uxi" secondAttribute="centerY" id="KnY-aC-RXu"/>
+                <constraint firstItem="s6b-Lw-shR" firstAttribute="leading" secondItem="J1H-aP-uxi" secondAttribute="leading" id="YSl-Lj-lpV"/>
+                <constraint firstItem="nqZ-8F-ccC" firstAttribute="bottom" secondItem="s6b-Lw-shR" secondAttribute="bottom" id="ag4-TE-9aP"/>
+                <constraint firstItem="nqZ-8F-ccC" firstAttribute="trailing" secondItem="s6b-Lw-shR" secondAttribute="trailing" id="b2O-je-ns0"/>
+                <constraint firstItem="DKj-3D-Iia" firstAttribute="centerX" secondItem="J1H-aP-uxi" secondAttribute="centerX" id="cR6-yy-9OJ"/>
+                <constraint firstItem="s6b-Lw-shR" firstAttribute="top" secondItem="HVh-nJ-J1x" secondAttribute="bottom" constant="10" id="cVT-Hh-90R"/>
+                <constraint firstItem="HVh-nJ-J1x" firstAttribute="leading" secondItem="nqZ-8F-ccC" secondAttribute="leading" id="eDx-FD-9el"/>
+                <constraint firstItem="nqZ-8F-ccC" firstAttribute="trailing" secondItem="HVh-nJ-J1x" secondAttribute="trailing" constant="10" id="pdl-it-8mc"/>
+            </constraints>
+            <point key="canvasLocation" x="71" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="windsor">
+            <color red="0.27058823529411763" green="0.035294117647058823" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

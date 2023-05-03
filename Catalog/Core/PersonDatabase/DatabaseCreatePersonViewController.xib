@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatabaseCreatePersonViewController" customModule="Catalog" customModuleProvider="target">
+            <connections>
+                <outlet property="addImageButton" destination="pUq-yK-pc2" id="ZPi-wH-ZAj"/>
+                <outlet property="collectionView" destination="fEF-A9-iss" id="v4m-Oc-fKN"/>
+                <outlet property="createPersonButton" destination="VUE-Nd-zw7" id="WIv-XC-tw2"/>
+                <outlet property="loadingIndicator" destination="YTm-0z-sRu" id="YR2-KD-NYK"/>
+                <outlet property="nameTextField" destination="5e5-bM-dtk" id="14e-Og-OyD"/>
+                <outlet property="surnameTextField" destination="pC8-1E-Xz7" id="bxS-Am-IZE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wrq-El-hwc">
+                    <rect key="frame" x="0.0" y="79" width="383" height="165"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5e5-bM-dtk">
+                            <rect key="frame" x="48" y="0.0" width="287" height="37.666666666666664"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37.670000000000002" id="9we-Lg-Cdz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="wbY-4C-yCi"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pC8-1E-Xz7">
+                            <rect key="frame" x="48" y="57.666666666666657" width="287" height="37.333333333333343"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="37.329999999999998" id="pXr-I1-cIM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="8ik-9C-nvt"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUq-yK-pc2">
+                            <rect key="frame" x="48" y="115" width="287" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="84F-AS-Lu7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="tintColor" name="windsor"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Add Person Image">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <buttonConfiguration key="configuration" style="plain" title="Add Person Image">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" name="windsor"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="didTapAddPersonImage:" destination="-1" eventType="touchUpInside" id="bgl-pT-nAe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="5e5-bM-dtk" firstAttribute="width" secondItem="Wrq-El-hwc" secondAttribute="width" multiplier="0.75" id="KJF-KI-QL9"/>
+                        <constraint firstItem="pUq-yK-pc2" firstAttribute="width" secondItem="Wrq-El-hwc" secondAttribute="width" multiplier="0.75" id="NnT-Tt-lb4"/>
+                        <constraint firstItem="pC8-1E-Xz7" firstAttribute="width" secondItem="Wrq-El-hwc" secondAttribute="width" multiplier="0.75" id="lXX-Of-Fyo"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-Td-xBN">
+                    <rect key="frame" x="0.0" y="244" width="393" height="574"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-pu-Di4">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="574"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fEF-A9-iss">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="494"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KP3-YJ-xkd">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="KkB-th-DPe"/>
+                                        <outlet property="delegate" destination="-1" id="Zoa-wP-CgP"/>
+                                    </connections>
+                                </collectionView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hi1-qV-M1w">
+                                    <rect key="frame" x="0.0" y="504" width="393" height="70"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUE-Nd-zw7">
+                                            <rect key="frame" x="49" y="10" width="295" height="50"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Create Person">
+                                                <backgroundConfiguration key="background">
+                                                    <color key="backgroundColor" name="windsor"/>
+                                                </backgroundConfiguration>
+                                                <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="didTapCreatePerson:" destination="-1" eventType="touchUpInside" id="ImE-nc-2rg"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="VUE-Nd-zw7" secondAttribute="bottom" constant="10" id="E1p-6J-9ZU"/>
+                                        <constraint firstAttribute="height" constant="70" id="Je0-H0-yBc"/>
+                                        <constraint firstItem="VUE-Nd-zw7" firstAttribute="top" secondItem="hi1-qV-M1w" secondAttribute="top" constant="10" id="M45-Vs-8gx"/>
+                                        <constraint firstItem="VUE-Nd-zw7" firstAttribute="width" secondItem="hi1-qV-M1w" secondAttribute="width" multiplier="0.75" id="SuX-Vc-L6D"/>
+                                        <constraint firstItem="VUE-Nd-zw7" firstAttribute="centerX" secondItem="hi1-qV-M1w" secondAttribute="centerX" id="XRd-HC-JL2"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <variation key="heightClass=compact-widthClass=regular" distribution="fillEqually"/>
+                </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YTm-0z-sRu">
+                    <rect key="frame" x="186.66666666666666" y="481" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wrq-El-hwc" secondAttribute="trailing" constant="10" id="69g-61-Gpg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lMc-Td-xBN" secondAttribute="bottom" id="F6a-zl-mrs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lMc-Td-xBN" secondAttribute="trailing" id="JVr-4A-fAW"/>
+                <constraint firstItem="lMc-Td-xBN" firstAttribute="top" secondItem="Wrq-El-hwc" secondAttribute="bottom" id="aoc-HP-BWm"/>
+                <constraint firstItem="Wrq-El-hwc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bu8-W6-LwR"/>
+                <constraint firstItem="YTm-0z-sRu" firstAttribute="centerY" secondItem="fEF-A9-iss" secondAttribute="centerY" id="hzn-8U-bmx"/>
+                <constraint firstItem="YTm-0z-sRu" firstAttribute="centerX" secondItem="fEF-A9-iss" secondAttribute="centerX" id="iDu-qo-Wua"/>
+                <constraint firstItem="Wrq-El-hwc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="iX4-yM-DlM"/>
+                <constraint firstItem="lMc-Td-xBN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w1d-bh-G3U"/>
+            </constraints>
+            <point key="canvasLocation" x="71" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="windsor">
+            <color red="0.27058823529411763" green="0.035294117647058823" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
