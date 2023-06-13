@@ -32,7 +32,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setFont(titleFont, forItem: .OnboardingScreenStartButton)
             
             // Onboarding screen images.
-            if #available(iOS 13.0, *) {
+            if #available(iOS 16.0, *) {
                 $0.setImage(UIImage(systemName: "sun.max.trianglebadge.exclamationmark")!.withTintColor(.black, renderingMode: .alwaysOriginal),
                             forItem: .OnboardingScreenIllumination)
                 $0.setImage(UIImage(systemName: "eyeglasses")!.withTintColor(.black, renderingMode: .alwaysOriginal),
@@ -72,7 +72,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setFont(titleFont, forItem: .RetryScreenRetryButton)
             
             // Retry screen images.
-            if #available(iOS 13.0, *) {
+            if #available(iOS 16.0, *) {
                 $0.setImage(UIImage(systemName: "sun.max.trianglebadge.exclamationmark")!.withTintColor(.black, renderingMode: .alwaysOriginal),
                             forItem: .RetryScreenHintEnvironment)
                 $0.setImage(UIImage(systemName: "face.smiling")!.withTintColor(.black, renderingMode: .alwaysOriginal),
@@ -85,7 +85,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(.systemYellow, forItem: .SuccessScreenBackground)
             
             // Success screen images.
-            if #available(iOS 13.0, *) {
+            if #available(iOS 16.0, *) {
                 $0.setImage(UIImage(systemName: "checkmark.circle")!.withTintColor(.black, renderingMode: .alwaysOriginal),
                             forItem: .SuccessScreenImage)
             } else {
