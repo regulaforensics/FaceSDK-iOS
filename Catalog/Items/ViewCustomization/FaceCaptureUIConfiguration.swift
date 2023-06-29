@@ -39,7 +39,9 @@ final class FaceCaptureUIConfigurationItem: CatalogItem {
                 guard let self = self, let viewController = viewController else { return }
                 self.showFaceCaptureResult(response, from: viewController)
             },
-            completion: nil)
+            completion: {
+                FaceSDK.service.customization.configuration = nil
+            })
     }
 }
 
