@@ -36,14 +36,11 @@ final class FaceCaptureUIConfigurationItem: CatalogItem {
             from: viewController,
             animated: true,
             onCapture: { [weak self, weak viewController] response in
+                FaceSDK.service.customization.configuration = nil
                 guard let self = self, let viewController = viewController else { return }
                 self.showFaceCaptureResult(response, from: viewController)
             },
             completion: nil)
-    }
-    
-    deinit {
-        FaceSDK.service.customization.configuration = nil
     }
 }
 

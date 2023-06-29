@@ -98,13 +98,10 @@ final class LivenessUIConfigurationItem: CatalogItem {
             from: viewController,
             animated: true,
             onLiveness: { [weak self, weak viewController] response in
+                FaceSDK.service.customization.configuration = nil
                 guard let self = self, let viewController = viewController else { return }
                 self.showLivenessResult(response, from: viewController)
             },
             completion: nil)
-    }
-    
-    deinit {
-        FaceSDK.service.customization.configuration = nil
     }
 }
