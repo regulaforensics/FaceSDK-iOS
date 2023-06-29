@@ -24,7 +24,6 @@ final class FaceCaptureUIConfigurationItem: CatalogItem {
             // Camera screen colors.
             $0.setColor(.systemYellow, forItem: .CameraScreenStrokeActive)
             $0.setColor(.systemYellow, forItem: .CameraScreenStrokeNormal)
-            $0.setColor(.systemYellow, forItem: .CameraScreenSectorActive)
             $0.setColor(.systemYellow, forItem: .CameraScreenFrontHintLabelBackground)
             $0.setColor(.black, forItem: .CameraScreenFrontHintLabelText)
             
