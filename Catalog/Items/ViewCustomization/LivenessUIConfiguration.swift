@@ -101,8 +101,10 @@ final class LivenessUIConfigurationItem: CatalogItem {
                 guard let self = self, let viewController = viewController else { return }
                 self.showLivenessResult(response, from: viewController)
             },
-            completion: {
-                FaceSDK.service.customization.configuration = nil
-            })
+            completion: nil)
+    }
+    
+    deinit {
+        FaceSDK.service.customization.configuration = nil
     }
 }
