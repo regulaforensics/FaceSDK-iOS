@@ -51,6 +51,7 @@
 		96AA511E2A0109AC00783B08 /* ImageQualityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA511C2A0109AC00783B08 /* ImageQualityItem.swift */; };
 		96AA51202A010A2A00783B08 /* QualityResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AA511F2A010A2A00783B08 /* QualityResultsViewController.swift */; };
 		9D0660742A3337D9000370EC /* LivenessUIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0660732A3337D9000370EC /* LivenessUIConfiguration.swift */; };
+		9D7EFC862A4D793B0016736B /* FaceCaptureUIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7EFC852A4D793B0016736B /* FaceCaptureUIConfiguration.swift */; };
 		9DC35FC2298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */; };
 		9DE86D922850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */; };
 		F1D3B0BD2ECCF5ED96E71FEB /* Pods_Catalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DBE93D03DA4D5B36021E6A /* Pods_Catalog.framework */; };
@@ -130,6 +131,7 @@
 		96AA511C2A0109AC00783B08 /* ImageQualityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageQualityItem.swift; sourceTree = "<group>"; };
 		96AA511F2A010A2A00783B08 /* QualityResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityResultsViewController.swift; sourceTree = "<group>"; };
 		9D0660732A3337D9000370EC /* LivenessUIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessUIConfiguration.swift; sourceTree = "<group>"; };
+		9D7EFC852A4D793B0016736B /* FaceCaptureUIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCaptureUIConfiguration.swift; sourceTree = "<group>"; };
 		9DC35FC1298174D00043FBB1 /* LivenessSkipOnboardingAndSuccessItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessSkipOnboardingAndSuccessItem.swift; sourceTree = "<group>"; };
 		9DE86D902850820400FCC18C /* FaceCaptureHideTorchConfigurationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureHideTorchConfigurationItem.swift; sourceTree = "<group>"; };
 		D1DBE93D03DA4D5B36021E6A /* Pods_Catalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				9D0660732A3337D9000370EC /* LivenessUIConfiguration.swift */,
+				9D7EFC852A4D793B0016736B /* FaceCaptureUIConfiguration.swift */,
 				86B6D2F126552EF800794170 /* LivenessHintViewAppearanceItem.swift */,
 				86D5E284266116B80076D417 /* LivenessHintPositionItem.swift */,
 				86D5E288266118400076D417 /* LivenessToolbarAppearanceItem.swift */,
@@ -487,6 +490,7 @@
 				86B6D2C12653DA7C00794170 /* RFCCatalogItem.m in Sources */,
 				86D5E2A7266128160076D417 /* FaceCaptureBackgroundColor.swift in Sources */,
 				9D0660742A3337D9000370EC /* LivenessUIConfiguration.swift in Sources */,
+				9D7EFC862A4D793B0016736B /* FaceCaptureUIConfiguration.swift in Sources */,
 				86B6D2F226552EF800794170 /* LivenessHintViewAppearanceItem.swift in Sources */,
 				86D5E285266116B80076D417 /* LivenessHintPositionItem.swift in Sources */,
 				86D5E2A1266123480076D417 /* LivenessLogoItem.swift in Sources */,

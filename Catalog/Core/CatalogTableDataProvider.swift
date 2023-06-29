@@ -35,6 +35,7 @@ final class CatalogTableDataProvider {
             LivenessSkipOnboardingAndSuccessItem(),
             
             LivenessUIConfigurationItem(),
+            FaceCaptureUIConfigurationItem(),
             LivenessHintViewAppearanceItem(),
             LivenessHintPositionItem(),
             LivenessToolbarAppearanceItem(),
