@@ -85,12 +85,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(.systemYellow, forItem: .SuccessScreenBackground)
             
             // Success screen images.
-            if #available(iOS 16.0, *) {
-                $0.setImage(UIImage(systemName: "checkmark.circle")!.withTintColor(.black, renderingMode: .alwaysOriginal),
-                            forItem: .SuccessScreenImage)
-            } else {
-                // Use your image assets.
-            }
+            $0.setImage(UIImage(named: "checkmark")!, forItem: .SuccessScreenImage)
         }
         FaceSDK.service.customization.configuration = interfaceConfiguration
         
