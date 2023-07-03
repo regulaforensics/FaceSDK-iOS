@@ -45,12 +45,14 @@ final class LivenessHintViewAppearanceItem: CatalogItem {
 private extension LivenessHintViewAppearanceItem {
     /// Restorins original appearance of the HintView.
     private func applyOriginalAppearance() {
+        let lightGrayColor = UIColor(white: 0.91, alpha: 1.0)
+        
         let hintViewAppearance = HintView.appearance(whenContainedInInstancesOf: [LivenessContentView.self])
         hintViewAppearance.cornerRadius = 8
-        hintViewAppearance.setBackgroundColor(.black, for: .front)
-        hintViewAppearance.setTextColor(.white, for: .front)
+        hintViewAppearance.setBackgroundColor(lightGrayColor, for: .front)
+        hintViewAppearance.setTextColor(.black, for: .front)
 
         let hintLabelAppearance = UILabel.appearance(whenContainedInInstancesOf: [HintView.self, LivenessContentView.self])
-        hintLabelAppearance.font = .systemFont(ofSize: 30)
+        hintLabelAppearance.font = .preferredFont(forTextStyle: .title2)
     }
 }

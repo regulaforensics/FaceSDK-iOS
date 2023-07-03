@@ -42,7 +42,7 @@ private extension LivenessToolbarAppearanceItem {
     /// Restorins original appearance.
     private func applyOriginalAppearance() {
         let toolbarAppearance = CameraToolbarView.appearance(whenContainedInInstancesOf: [LivenessContentView.self])
-        toolbarAppearance.backgroundColor = .black
+        toolbarAppearance.backgroundColor = .clear
 
         let toolbarButtonAppearance = UIButton.appearance(whenContainedInInstancesOf: [CameraToolbarView.self, LivenessContentView.self])
         toolbarButtonAppearance.backgroundColor = nil
