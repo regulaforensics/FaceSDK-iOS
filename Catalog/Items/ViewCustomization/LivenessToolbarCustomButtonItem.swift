@@ -18,6 +18,7 @@ final class LivenessToolbarCustomButtonItem: CatalogItem {
 
         override init(frame: CGRect) {
             super.init(frame: frame)
+            customCloseButton.backgroundColor = .windsor
             customCloseButton.setTitle("CLOSE", for: .normal)
             customCloseButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 30)
         }
