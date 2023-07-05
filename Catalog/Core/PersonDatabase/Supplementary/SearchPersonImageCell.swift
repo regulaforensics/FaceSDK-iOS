@@ -31,7 +31,7 @@ class SearchPersonImageCell: UICollectionViewCell {
     }
     
     private func setup() {
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         
         stackContainer.backgroundColor = UIColor.black.withAlphaComponent(0.6)

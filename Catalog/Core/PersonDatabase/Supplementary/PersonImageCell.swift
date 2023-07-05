@@ -25,7 +25,7 @@ class PersonImageCell: UICollectionViewCell {
     }
     
     private func setup() {
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         contentView.addSubview(imageView)
     }
