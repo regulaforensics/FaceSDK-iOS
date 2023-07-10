@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatabasePersonsViewController" customModule="Catalog" customModuleProvider="target">
+            <connections>
+                <outlet property="loadingIndicator" destination="Ng8-Jq-bvj" id="Hms-v9-B8F"/>
+                <outlet property="personsTableView" destination="A4q-q5-I67" id="NCb-EK-hlE"/>
+                <outlet property="searchButton" destination="dVB-PB-GHd" id="C9D-yL-219"/>
+                <outlet property="view" destination="h47-YT-3co" id="ZIZ-qs-u8a"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="h47-YT-3co">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A4q-q5-I67">
+                    <rect key="frame" x="0.0" y="59" width="393" height="686"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Oyn-JM-bXC"/>
+                        <outlet property="delegate" destination="-1" id="Oik-NV-RwU"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVB-PB-GHd">
+                    <rect key="frame" x="136.66666666666666" y="755" width="119.99999999999997" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="pzx-LT-Da3"/>
+                        <constraint firstAttribute="height" constant="50" id="qFc-Ar-qHm"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Search">
+                        <backgroundConfiguration key="background">
+                            <color key="backgroundColor" name="windsor"/>
+                        </backgroundConfiguration>
+                        <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="didPressSearchButton:" destination="-1" eventType="touchUpInside" id="jdM-1C-57A"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ng8-Jq-bvj">
+                    <rect key="frame" x="185" y="398" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="3U9-5G-bWb"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="3U9-5G-bWb" firstAttribute="bottom" secondItem="dVB-PB-GHd" secondAttribute="bottom" constant="13" id="CQe-L2-fV5"/>
+                <constraint firstItem="dVB-PB-GHd" firstAttribute="top" secondItem="A4q-q5-I67" secondAttribute="bottom" constant="10" id="Emd-eQ-aFk"/>
+                <constraint firstItem="3U9-5G-bWb" firstAttribute="trailing" secondItem="A4q-q5-I67" secondAttribute="trailing" id="Hha-oR-s5Q"/>
+                <constraint firstItem="A4q-q5-I67" firstAttribute="top" secondItem="3U9-5G-bWb" secondAttribute="top" id="MZU-kk-bKO"/>
+                <constraint firstItem="A4q-q5-I67" firstAttribute="leading" secondItem="3U9-5G-bWb" secondAttribute="leading" id="dre-1A-cTH"/>
+                <constraint firstItem="dVB-PB-GHd" firstAttribute="centerX" secondItem="h47-YT-3co" secondAttribute="centerX" id="f26-nM-0Iv"/>
+            </constraints>
+            <point key="canvasLocation" x="47.692307692307693" y="20.616113744075829"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="windsor">
+            <color red="0.27058823529411763" green="0.035294117647058823" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

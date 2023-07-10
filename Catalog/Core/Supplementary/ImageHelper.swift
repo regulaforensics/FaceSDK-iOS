@@ -17,6 +17,33 @@ class ImageHelper {
                                   color: UIColor,
                                   lineWidth: CGFloat = 9,
                                   pointSize: CGFloat = 14) -> UIImage? {
+        drawFaceDetection(onImage: image,
+                          faceRect: detection.faceRect,
+                          landmarks: detection.landmarks ?? [],
+                          color: color,
+                          lineWidth: lineWidth,
+                          pointSize: pointSize)
+    }
+    
+    static func drawFaceDetection(onImage image: UIImage,
+                                  searchDetection: PersonDatabase.SearchPersonDetection,
+                                  color: UIColor,
+                                  lineWidth: CGFloat = 9,
+                                  pointSize: CGFloat = 14) -> UIImage? {
+        drawFaceDetection(onImage: image,
+                          faceRect: searchDetection.rect,
+                          landmarks: searchDetection.landmarks,
+                          color: color,
+                          lineWidth: lineWidth,
+                          pointSize: pointSize)
+    }
+    
+    private static func drawFaceDetection(onImage image: UIImage,
+                                  faceRect: CGRect,
+                                  landmarks: [Point],
+                                  color: UIColor,
+                                  lineWidth: CGFloat = 9,
+                                  pointSize: CGFloat = 14) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
         guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
         ctx.saveGState()
@@ -25,9 +52,9 @@ class ImageHelper {
 
         ctx.setStrokeColor(color.cgColor)
         ctx.setFillColor(color.cgColor)
-        ctx.stroke(detection.faceRect)
+        ctx.stroke(faceRect)
         
-        detection.landmarks?.forEach({ landmark in
+        landmarks.forEach({ landmark in
             let landmarkPointSize: CGFloat = pointSize
             let size = CGSize(width: landmarkPointSize, height: landmarkPointSize)
             ctx.fillEllipse(in: CGRect(origin: landmark.cgPoint, size: size))

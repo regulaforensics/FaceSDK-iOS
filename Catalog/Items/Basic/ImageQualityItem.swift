@@ -166,9 +166,7 @@ class ImageQualityViewController: UIViewController {
         return indicator
     }()
     
-    private lazy var imagePicker: ImagePicker = {
-        ImagePicker(presenter: self, delegate: self)
-    }()
+    private lazy var imagePicker: ImagePicker = ImagePicker(presenter: self, delegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()

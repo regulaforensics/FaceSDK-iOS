@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22113.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22089.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatabaseSearchViewController" customModule="Catalog" customModuleProvider="target">
+            <connections>
+                <outlet property="browseButton" destination="4rE-8B-rsV" id="dVW-AF-Bxe"/>
+                <outlet property="collectionView" destination="TbZ-aw-XM0" id="4qj-PF-y4F"/>
+                <outlet property="loadingIndicator" destination="hNq-Ft-lWU" id="9E5-6G-KlN"/>
+                <outlet property="pickedImageView" destination="Htm-JJ-HnZ" id="anh-En-ucC"/>
+                <outlet property="searchButton" destination="oc2-Zc-X87" id="Guj-1O-EM0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="uIa-mF-Im7">
+                    <rect key="frame" x="48" y="0.0" width="800" height="393"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwE-tS-5eB">
+                            <rect key="frame" x="0.0" y="0.0" width="338" height="393"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSO-He-dF1">
+                                    <rect key="frame" x="0.0" y="343" width="338" height="50"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IT8-gr-Xsv">
+                                            <rect key="frame" x="5" y="0.0" width="328" height="50"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rE-8B-rsV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="161.5" height="50"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Browse image">
+                                                        <backgroundConfiguration key="background">
+                                                            <color key="backgroundColor" name="windsor"/>
+                                                        </backgroundConfiguration>
+                                                        <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="didTapBrowseButton:" destination="-1" eventType="touchUpInside" id="J1Y-9v-5uP"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oc2-Zc-X87">
+                                                    <rect key="frame" x="166.5" y="0.0" width="161.5" height="50"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Search"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Search">
+                                                        <backgroundConfiguration key="background">
+                                                            <color key="backgroundColor" name="windsor"/>
+                                                        </backgroundConfiguration>
+                                                        <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="didTapSearchButton:" destination="-1" eventType="touchUpInside" id="L8e-C9-Npg"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Cwv-E6-OJq"/>
+                                        <constraint firstItem="IT8-gr-Xsv" firstAttribute="leading" secondItem="qSO-He-dF1" secondAttribute="leading" constant="5" id="IGk-WK-0Os"/>
+                                        <constraint firstItem="IT8-gr-Xsv" firstAttribute="top" secondItem="qSO-He-dF1" secondAttribute="top" id="TKw-g1-46k"/>
+                                        <constraint firstItem="IT8-gr-Xsv" firstAttribute="leading" secondItem="qSO-He-dF1" secondAttribute="leading" constant="5" id="kRm-Kb-0JM"/>
+                                        <constraint firstAttribute="bottom" secondItem="IT8-gr-Xsv" secondAttribute="bottom" id="lVI-bO-dTg"/>
+                                        <constraint firstAttribute="trailing" secondItem="IT8-gr-Xsv" secondAttribute="trailing" constant="5" id="s9C-RR-URl"/>
+                                    </constraints>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Htm-JJ-HnZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="338" height="338"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Htm-JJ-HnZ" secondAttribute="height" multiplier="1:1" id="AKi-Px-Iba"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Htm-JJ-HnZ" secondAttribute="trailing" id="7ey-ut-zje"/>
+                                <constraint firstItem="qSO-He-dF1" firstAttribute="leading" secondItem="vwE-tS-5eB" secondAttribute="leading" id="Lkg-Kb-qm2"/>
+                                <constraint firstItem="Htm-JJ-HnZ" firstAttribute="leading" secondItem="vwE-tS-5eB" secondAttribute="leading" id="Q4A-ui-5Xk"/>
+                                <constraint firstAttribute="trailing" secondItem="qSO-He-dF1" secondAttribute="trailing" id="WcZ-Pw-CgJ"/>
+                                <constraint firstItem="qSO-He-dF1" firstAttribute="top" secondItem="Htm-JJ-HnZ" secondAttribute="bottom" constant="5" id="Yeb-3b-ghA"/>
+                                <constraint firstItem="Htm-JJ-HnZ" firstAttribute="top" secondItem="vwE-tS-5eB" secondAttribute="top" id="Zk7-kv-Vqe"/>
+                                <constraint firstAttribute="bottom" secondItem="qSO-He-dF1" secondAttribute="bottom" id="f3L-Sy-ZHp"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TbZ-aw-XM0">
+                            <rect key="frame" x="344" y="0.0" width="456" height="393"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="asm-md-1x9">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="4v6-fr-rV1"/>
+                                <outlet property="delegate" destination="-1" id="rRK-Ct-I10"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
+                </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-Ft-lWU">
+                    <rect key="frame" x="610" y="186.5" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TbZ-aw-XM0" firstAttribute="centerY" secondItem="hNq-Ft-lWU" secondAttribute="centerY" id="3dc-V1-4x8"/>
+                <constraint firstItem="hNq-Ft-lWU" firstAttribute="centerX" secondItem="TbZ-aw-XM0" secondAttribute="centerX" id="H6N-tA-dIr"/>
+                <constraint firstItem="uIa-mF-Im7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Y7h-Ei-ARJ"/>
+                <constraint firstItem="uIa-mF-Im7" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="adc-Sj-DQX"/>
+                <constraint firstItem="uIa-mF-Im7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="fHp-fv-Vo9"/>
+                <constraint firstItem="uIa-mF-Im7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hMf-FQ-mvT"/>
+            </constraints>
+            <point key="canvasLocation" x="16.923076923076923" y="20.616113744075829"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person_placeholder" width="220" height="220"/>
+        <namedColor name="windsor">
+            <color red="0.27058823529411763" green="0.035294117647058823" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
