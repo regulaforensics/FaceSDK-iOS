@@ -54,7 +54,7 @@ final class MatchFacesRequestViewController: UIViewController {
     }()
 
     let secondImageDetectAllSwitch = UISwitch()
-    let thumbnailsSwitch = UISwitch()
+    let cropSwitch = UISwitch()
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
@@ -156,7 +156,7 @@ final class MatchFacesRequestViewController: UIViewController {
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
-        root.addArrangedSubview(makeOptionsRow(text: "Thumbnails", switchView: thumbnailsSwitch))
+        root.addArrangedSubview(makeOptionsRow(text: "Return cropped images", switchView: cropSwitch))
         root.addArrangedSubview(matchFacesButton)
         root.addArrangedSubview(clearButton)
     }
@@ -271,7 +271,12 @@ final class MatchFacesRequestViewController: UIViewController {
         }
 
         let request = MatchFacesRequest(images: [firstImage, secondImage])
-        request.thumbnails = thumbnailsSwitch.isOn
+        
+        if (cropSwitch.isOn) {
+            let outputImageParams = OutputImageParams()
+            outputImageParams.crop = .init(type: .ratio4x5)
+            request.outputImageParams = outputImageParams
+        }
 
         self.similarityLabel.text = "Processing..."
         self.matchFacesButton.isEnabled = false
