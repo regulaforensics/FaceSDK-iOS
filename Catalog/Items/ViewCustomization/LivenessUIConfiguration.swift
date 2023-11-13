@@ -27,7 +27,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(.black, forItem: .OnboardingScreenStartButtonBackground)
             
             // Onboarding screen fonts.
-            $0.setFont(messageFont, forItem: .OnboardingScreenMessageLabel)
+            $0.setFont(messageFont, forItem: .OnboardingScreenMessageLabels)
             $0.setFont(titleFont, forItem: .OnboardingScreenTitleLabel)
             $0.setFont(titleFont, forItem: .OnboardingScreenStartButton)
             
