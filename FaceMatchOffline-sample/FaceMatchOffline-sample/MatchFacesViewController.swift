@@ -42,7 +42,6 @@ class MatchFacesViewController: UIViewController {
     }()
 
     let secondImageDetectAllSwitch = UISwitch()
-    let thumbnailsSwitch = UISwitch()
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
@@ -144,7 +143,6 @@ class MatchFacesViewController: UIViewController {
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
-        root.addArrangedSubview(makeOptionsRow(text: "Thumbnails", switchView: thumbnailsSwitch))
         root.addArrangedSubview(matchFacesButton)
         root.addArrangedSubview(clearButton)
     }
