@@ -42,6 +42,12 @@ class MatchFacesViewController: UIViewController {
     }()
 
     let secondImageDetectAllSwitch = UISwitch()
+    
+    private var firstUIImage: UIImage?
+    private var secondUIImage: UIImage?
+    
+    private var firstImageType: ImageType = .external
+    private var secondImageType: ImageType = .external
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
@@ -173,18 +179,20 @@ class MatchFacesViewController: UIViewController {
     @objc private func handleFirstImageTap() {
         similarityLabel.text = similarityLabelDefaultText
 
-        createImageForPosition(.first) { [weak self] (image) in
-            self?.firstImageView.image = image?.image
-            self?.firstImage = image
+        createImageForPosition(.first) { [weak self] (image, type) in
+            self?.firstUIImage = image
+            self?.firstImageView.image = image
+            self?.firstImageType = type
         }
     }
 
     @objc private func handleSecondImageTap() {
         similarityLabel.text = similarityLabelDefaultText
 
-        createImageForPosition(.second) { [weak self] (image) in
-            self?.secondImageView.image = image?.image
-            self?.secondImage = image
+        createImageForPosition(.second) { [weak self] (image, type) in
+            self?.secondUIImage = image
+            self?.secondImageView.image = image
+            self?.secondImageType = type
         }
     }
 
@@ -197,50 +205,31 @@ class MatchFacesViewController: UIViewController {
         }
     }
 
-    private func createImageForPosition(_ position: Position, completion: @escaping (MatchFacesImage?) -> Void) {
+    private func createImageForPosition(_ position: Position, completion: @escaping (UIImage?, ImageType) -> Void) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Regula FaceCaptureUI", style: .default, handler: { _ in
             FaceSDK.service.presentFaceCaptureViewController(
                 from: self,
                 animated: true,
                 onCapture: { response in
-                    let image = response.image.map {
-                        MatchFacesImage(
-                            rfsImage: $0,
-                            detectAll: self.detectAllOptionValueFor(position: position)
-                        )
-                    }
-                    completion(image)
+                    let image = response.image?.image
+                    completion(image, .live)
                 },
                 completion: nil
             )
         }))
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
             self.pickImage(sourceType: .photoLibrary) { image in
-                let result = image.map {
-                    MatchFacesImage(
-                        image: $0,
-                        imageType: .printed,
-                        detectAll: self.detectAllOptionValueFor(position: position)
-                    )
-                }
-                completion(result)
+                completion(image, .printed)
             }
         }))
         alert.addAction(UIAlertAction(title: "Camera Shoot", style: .default, handler: { _ in
             self.pickImage(sourceType: .camera) { image in
-                let result = image.map {
-                    MatchFacesImage(
-                        image: $0,
-                        imageType: .live,
-                        detectAll: self.detectAllOptionValueFor(position: position)
-                    )
-                }
-                completion(result)
+                completion(image, .live)
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            completion(nil)
+            completion(nil, .external)
         }))
 
 
@@ -265,12 +254,24 @@ class MatchFacesViewController: UIViewController {
     }
 
     @objc private func handleMatchButtonPress() {
-        guard let firstImage = firstImage, let secondImage = secondImage else {
+        guard let firstUIImage = firstUIImage, let secondUIImage = secondUIImage else {
             let alert = UIAlertController(title: "Having both images is required", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
+        
+        let firstImage = MatchFacesImage(
+            image: firstUIImage,
+            imageType: firstImageType,
+            detectAll: self.detectAllOptionValueFor(position: .first)
+        )
+        
+        let secondImage = MatchFacesImage(
+            image: secondUIImage,
+            imageType: secondImageType,
+            detectAll: self.detectAllOptionValueFor(position: .second)
+        )
 
         let request = MatchFacesRequest(images: [firstImage, secondImage])
         
