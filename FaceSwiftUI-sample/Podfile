@@ -6,6 +6,6 @@ target 'FaceSwiftUI-sample' do
   use_frameworks!
 
   # Pods for FaceSwiftUI-sample
-  pod 'FaceCoreSDKBeta', '0.1.302'
-  pod 'FaceSDKBeta', '5.1.1317'
+  pod 'FaceSDK', '~> 5.2'
+  pod 'FaceCoreSDK', '~> 5.2'
 end
