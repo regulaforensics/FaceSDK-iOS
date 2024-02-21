@@ -54,7 +54,6 @@ final class MatchFacesRequestViewController: UIViewController {
     }()
 
     let secondImageDetectAllSwitch = UISwitch()
-    let thumbnailsSwitch = UISwitch()
 
     private var firstImage: MatchFacesImage?
     private var secondImage: MatchFacesImage?
