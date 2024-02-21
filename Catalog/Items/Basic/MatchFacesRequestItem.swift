@@ -156,7 +156,6 @@ final class MatchFacesRequestViewController: UIViewController {
 
         root.addArrangedSubview(similarityLabel)
         root.addArrangedSubview(imagesContainer)
-        root.addArrangedSubview(makeOptionsRow(text: "Thumbnails", switchView: thumbnailsSwitch))
         root.addArrangedSubview(matchFacesButton)
         root.addArrangedSubview(clearButton)
     }
@@ -271,7 +270,6 @@ final class MatchFacesRequestViewController: UIViewController {
         }
 
         let request = MatchFacesRequest(images: [firstImage, secondImage])
-        request.thumbnails = thumbnailsSwitch.isOn
 
         self.similarityLabel.text = "Processing..."
         self.matchFacesButton.isEnabled = false
