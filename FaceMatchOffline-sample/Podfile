@@ -5,7 +5,6 @@ target 'FaceMatchOffline-sample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'FaceCoreSDK', '~> 5.2'
-  pod 'FaceSDK', '~> 5.2'
-
+  pod 'FaceSDK', '~> 6.1.1743'
+  pod 'FaceCoreMatch', '~> 6.1.571'
 end
