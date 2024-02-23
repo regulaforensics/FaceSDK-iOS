@@ -1,4 +1,3 @@
-source 'http://gitlab.regula.local/mobile-sdk/podspecs.git'
 source 'https://cdn.cocoapods.org/'
 
 target 'FaceSwiftUI-sample' do
