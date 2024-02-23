@@ -4,6 +4,6 @@
 target 'FaceCertificatePinning' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'FaceSDK', '~> 6.1.1743'
-  pod 'FaceCoreBasic', '~> 6.1.570'
+  pod 'FaceSDK', '~> 6.1'
+  pod 'FaceCoreBasic', '~> 6.1'
 end
