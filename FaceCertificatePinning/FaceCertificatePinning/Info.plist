@@ -39,5 +39,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is required to capture face image</string>
 </dict>
 </plist>

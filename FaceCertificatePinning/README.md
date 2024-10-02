@@ -1,6 +1,5 @@
 # Regula Document Reader (iOS version)
-The sample project for working with the 
-[Mobile document authenticator Regula 1120](https://regulaforensics.com/en/products/machine_verification/1120/).
+The sample project for FaceSDK usage with identity pinning
 
 # Content
 * [How to build the demo application](#how-to-build-the-demo-application)

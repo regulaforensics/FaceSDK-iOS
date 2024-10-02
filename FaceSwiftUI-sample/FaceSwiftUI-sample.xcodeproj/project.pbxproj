@@ -15,9 +15,12 @@
 		9DB5DE1A29801389006D0EE0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB5DE1929801389006D0EE0 /* MainView.swift */; };
 		9DB5DE1C2980138A006D0EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB5DE1B2980138A006D0EE0 /* Assets.xcassets */; };
 		9DB5DE1F2980138A006D0EE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB5DE1E2980138A006D0EE0 /* Preview Assets.xcassets */; };
+		E0F6FF97DE457D6F38D0A692 /* Pods_FaceSwiftUI_sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758F7C7D92D7AE3EB0604F33 /* Pods_FaceSwiftUI_sample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		430E1D74379694C76467B195 /* Pods-FaceSwiftUI-sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceSwiftUI-sample.release.xcconfig"; path = "Target Support Files/Pods-FaceSwiftUI-sample/Pods-FaceSwiftUI-sample.release.xcconfig"; sourceTree = "<group>"; };
+		758F7C7D92D7AE3EB0604F33 /* Pods_FaceSwiftUI_sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceSwiftUI_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D57D3E529AE207600AEAF4C /* FaceFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceFacade.swift; sourceTree = "<group>"; };
 		9D57D3E929AE2E9700AEAF4C /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		9D57D3EB29AE302F00AEAF4C /* LivenessResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivenessResultsView.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		9DB5DE1929801389006D0EE0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9DB5DE1B2980138A006D0EE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DB5DE1E2980138A006D0EE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3523617DCF1BF1EB6ECA640 /* Pods-FaceSwiftUI-sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceSwiftUI-sample.debug.xcconfig"; path = "Target Support Files/Pods-FaceSwiftUI-sample/Pods-FaceSwiftUI-sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0F6FF97DE457D6F38D0A692 /* Pods_FaceSwiftUI_sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 		4046E0EFEDD1BB21A321DDE4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				C3523617DCF1BF1EB6ECA640 /* Pods-FaceSwiftUI-sample.debug.xcconfig */,
+				430E1D74379694C76467B195 /* Pods-FaceSwiftUI-sample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -54,6 +61,7 @@
 				9DB5DE1629801389006D0EE0 /* FaceSwiftUI-sample */,
 				9DB5DE1529801389006D0EE0 /* Products */,
 				4046E0EFEDD1BB21A321DDE4 /* Pods */,
+				D14F0FE94CCD228AA701664A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +97,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D14F0FE94CCD228AA701664A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				758F7C7D92D7AE3EB0604F33 /* Pods_FaceSwiftUI_sample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DB5DE222980138A006D0EE0 /* Build configuration list for PBXNativeTarget "FaceSwiftUI-sample" */;
 			buildPhases = (
+				14970B0D642E5FA252E24F2D /* [CP] Check Pods Manifest.lock */,
 				9DB5DE1029801389006D0EE0 /* Sources */,
 				9DB5DE1129801389006D0EE0 /* Frameworks */,
 				9DB5DE1229801389006D0EE0 /* Resources */,
+				9602107A280C67DE4596ECF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,6 +171,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14970B0D642E5FA252E24F2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FaceSwiftUI-sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9602107A280C67DE4596ECF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceSwiftUI-sample/Pods-FaceSwiftUI-sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaceSwiftUI-sample/Pods-FaceSwiftUI-sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaceSwiftUI-sample/Pods-FaceSwiftUI-sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9DB5DE1029801389006D0EE0 /* Sources */ = {
@@ -287,6 +347,7 @@
 		};
 		9DB5DE232980138A006D0EE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3523617DCF1BF1EB6ECA640 /* Pods-FaceSwiftUI-sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,6 +378,7 @@
 		};
 		9DB5DE242980138A006D0EE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 430E1D74379694C76467B195 /* Pods-FaceSwiftUI-sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
