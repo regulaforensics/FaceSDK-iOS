@@ -20,7 +20,6 @@ class DatabaseGroupsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      FaceSDK.service.serviceURL = "http://test.regula.local:41101/"
         FaceSDK.service.initialize { success, error in
             print("FaceSDK initialized \(success)")
         }
