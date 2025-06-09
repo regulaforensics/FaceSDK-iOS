@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-platform :ios, '12.0'
+platform :ios, '13.0'
 use_frameworks!
 
 target 'FaceSearchSample' do
-  pod 'FaceSDK', '~> 6.4'
-  pod 'FaceCoreBasic', '~> 6.4'
+  pod 'FaceSDK', '~> 7.1'
+  pod 'FaceCoreBasic', '~> 7.1'
 end

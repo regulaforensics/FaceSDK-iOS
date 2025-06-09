@@ -229,6 +229,7 @@ class DetectFacesViewController: UIViewController, UINavigationControllerDelegat
     @objc private func didPressScenarioButton(_ sender: UIButton) {
         selectedScenario = DetectionScenario.allCases[sender.tag]
         updateScenarioSelection()
+        sendDetectFacesRequest()
     }
     
     @objc private func didPressResults(_ sender: Any) {
@@ -278,7 +279,10 @@ class DetectFacesViewController: UIViewController, UINavigationControllerDelegat
         guard detections.isEmpty == false else { return }
         let image = model.image
         // scale lines and points according target view size
-        let scale = image.size.width / galleryView.bounds.width
+        var scale = image.size.width / galleryView.bounds.width
+        if image.size.height > image.size.width {
+            scale = image.size.height / galleryView.bounds.height
+        }
         let lineWidth = 2 * scale
         let pointSize = 2 * scale
         

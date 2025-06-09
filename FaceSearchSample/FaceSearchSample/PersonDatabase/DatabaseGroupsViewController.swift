@@ -20,15 +20,14 @@ class DatabaseGroupsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        FaceSDK.service.initialize { success, error in
+        FaceSDK.service.initialize { [weak self] success, error in
             print("FaceSDK initialized \(success)")
+            self?.loadGroups()
         }
         title = "Groups"
         
         let createBarButton = UIBarButtonItem(title: "Create Group", style: .plain, target: self, action: #selector(didPressCreateButton))
         navigationItem.setRightBarButton(createBarButton, animated: false)
-        
-        loadGroups()
     }
     
     //MARK: - Database
