@@ -4,6 +4,6 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'FaceSearchSample' do
-  pod 'FaceSDK', '~> 7.1'
-  pod 'FaceCoreBasic', '~> 7.1'
+  pod 'FaceSDK', '~> 7.2'
+  pod 'FaceCoreBasic', '~> 7.2'
 end
