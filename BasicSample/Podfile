@@ -4,6 +4,6 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'BasicSample' do
-  pod 'FaceSDK', '~> 8.1'
-  pod 'FaceCoreBasic', '~> 8.1'
+  pod 'FaceSDK', '~> 8.2'
+  pod 'FaceCoreBasic', '~> 8.2'
 end
