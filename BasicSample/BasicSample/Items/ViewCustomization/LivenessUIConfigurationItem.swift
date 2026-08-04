@@ -50,14 +50,14 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(Colors.lightGray, forItem: .OnboardingScreenSubtitleLabelText)
             $0.setColor(Colors.message, forItem: .OnboardingScreenMessageLabelsText)
 
-            $0.setImage(Images.close, forItem: .OnboardingScreenCloseButton)
+            $0.setImage(Images.close, forItem: .onboardingScreenCloseButton)
             if #available(iOS 16.0, *) {
                 $0.setImage(UIImage(systemName: "sun.max.trianglebadge.exclamationmark")!.withTintColor(.black, renderingMode: .alwaysOriginal),
-                            forItem: .OnboardingScreenIllumination)
+                            forItem: .onboardingScreenIllumination)
                 $0.setImage(UIImage(systemName: "eyeglasses")!.withTintColor(.black, renderingMode: .alwaysOriginal),
-                            forItem: .OnboardingScreenAccessories)
+                            forItem: .onboardingScreenAccessories)
                 $0.setImage(UIImage(systemName: "camera.viewfinder")!.withTintColor(.black, renderingMode: .alwaysOriginal),
-                            forItem: .OnboardingScreenCameraLevel)
+                            forItem: .onboardingScreenCameraLevel)
             } else {
                 // Use your image assets.
             }
@@ -76,7 +76,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(Colors.lightGray, forItem: .CameraScreenStrokeActive)
             $0.setColor(Colors.image, forItem: .CameraScreenStrokeNormal)
 
-            $0.setImage(Images.close, forItem: .CameraScreenCloseButton)
+            $0.setImage(Images.close, forItem: .cameraScreenCloseButton)
 
             $0.setFont(Fonts.message, forItem: .CameraScreenHintLabel)
 
@@ -86,14 +86,14 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setFont(Fonts.subtitle, forItem: .ProcessingScreenLabel)
 
             // Retry screen
-            $0.setImage(Images.close, forItem: .RetryScreenCloseButton)
+            $0.setImage(Images.close, forItem: .retryScreenCloseButton)
             if #available(iOS 16.0, *) {
                 let retryEnvImage = UIImage(systemName: "sun.max.trianglebadge.exclamationmark")!
                     .withTintColor(.black, renderingMode: .alwaysOriginal)
-                $0.setImage(retryEnvImage, forItem: .RetryScreenHintEnvironment)
+                $0.setImage(retryEnvImage, forItem: .retryScreenHintEnvironment)
                 let retryHintImage = UIImage(systemName: "face.smiling")!
                     .withTintColor(.black, renderingMode: .alwaysOriginal)
-                $0.setImage(retryHintImage, forItem: .RetryScreenHintSubject)
+                $0.setImage(retryHintImage, forItem: .retryScreenHintSubject)
             } else {
                 // Use your image assets.
             }
@@ -110,7 +110,7 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setFont(Fonts.button, forItem: .RetryScreenRetryButton)
 
             // Success screen
-            $0.setImage(Images.success, forItem: .SuccessScreenImage)
+            $0.setImage(Images.success, forItem: .successScreenImage)
             $0.setColor(Colors.lightGray, forItem: .SuccessScreenBackground)
         }
 

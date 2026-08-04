@@ -13,10 +13,7 @@ final class CatalogViewController: UIViewController {
     private let tableDataProvider = CatalogTableDataProvider()
 
     lazy var tableView: UITableView = {
-        var style: UITableView.Style = .grouped
-        if #available(iOS 13, *) {
-            style = .insetGrouped
-        }
+        let style = UITableView.Style.insetGrouped
 
         let view = UITableView(frame: .zero, style: style)
         view.dataSource = self
@@ -43,9 +40,8 @@ final class CatalogViewController: UIViewController {
         }
 
         title = "FaceSDK Catalog"
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .always
-        }
+        
+        navigationItem.largeTitleDisplayMode = .always
     }
 }
 

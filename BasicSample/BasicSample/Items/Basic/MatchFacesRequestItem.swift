@@ -130,11 +130,7 @@ final class MatchFacesRequestViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .white
-        }
+        view.backgroundColor = .systemBackground
 
         let root = UIStackView()
         root.spacing = 15
@@ -218,9 +214,7 @@ final class MatchFacesRequestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     @objc private func handleFirstImageTap() {

@@ -1,4 +1,6 @@
 # Uncomment the next line to define a global platform for your project
+source 'https://github.com/regulaforensics/podspecs.git'
+
 platform :ios, '13.0'
 use_frameworks!
 
@@ -6,6 +8,6 @@ target 'FaceMatchOffline-sample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'FaceSDK', '~> 8.2'
-  pod 'FaceCoreMatch', '~> 8.2'
+  pod 'FaceSDK', '~> 8.3.0'
+  pod 'FaceCoreMatch', '~> 8.3.0'
 end

@@ -121,11 +121,7 @@ class MatchFacesViewController: UIViewController {
 
     func setupUI() {
       view = UIView()
-      if #available(iOS 13.0, *) {
-          view.backgroundColor = .systemBackground
-      } else {
-          view.backgroundColor = .white
-      }
+      view.backgroundColor = .systemBackground
 
       let root = UIStackView()
       root.spacing = 15
@@ -209,9 +205,7 @@ class MatchFacesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+        navigationItem.largeTitleDisplayMode = .never
 
         let filePath = Bundle.main.path(forResource: "regula", ofType: "license")!
         let data = NSData(contentsOfFile: filePath)! as Data

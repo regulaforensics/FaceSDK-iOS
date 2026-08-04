@@ -1,10 +1,10 @@
-source 'https://cdn.cocoapods.org/'
+source 'https://github.com/regulaforensics/podspecs.git'
 
 target 'FaceSwiftUI-sample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for FaceSwiftUI-sample
-  pod 'FaceSDK', '~> 8.2'
-  pod 'FaceCoreBasic', '~> 8.2'
+  pod 'FaceSDK', '~> 8.3.0'
+  pod 'FaceCoreBasic', '~> 8.3.0'
 end
