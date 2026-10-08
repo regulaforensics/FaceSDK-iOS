@@ -1,12 +1,25 @@
 # frozen_string_literal: true
 
+DEPLOYMENT_TARGET_IOS = '15.0'
 source 'https://github.com/regulaforensics/podspecs.git'
 
-platform :ios, '13.0'
+platform :ios, DEPLOYMENT_TARGET_IOS
 use_frameworks!
 
 target 'FaceSearchSample
   ' do
-  pod 'FaceSDK', '~> 8.3.0'
-  pod 'FaceCoreBasic', '~> 8.3.0'
+  pod 'FaceSDK', '~> 8.4.0'
+  pod 'FaceCoreBasic', '~> 8.4.0'
+end
+
+post_install do |installer|
+  desired_ios = Gem::Version.new(DEPLOYMENT_TARGET_IOS)
+
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      settings = config.build_settings
+      actual = Gem::Version.new(settings['IPHONEOS_DEPLOYMENT_TARGET'] || '0')
+      settings['IPHONEOS_DEPLOYMENT_TARGET'] = DEPLOYMENT_TARGET_IOS if actual < desired_ios
+    end
+  end
 end

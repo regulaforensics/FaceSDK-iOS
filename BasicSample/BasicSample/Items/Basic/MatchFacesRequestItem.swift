@@ -59,28 +59,32 @@ final class MatchFacesRequestViewController: UIViewController {
     }
 
     private lazy var matchFacesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(handleMatchButtonPress), for: .touchUpInside)
+        var configuration = UIButton.Configuration.tinted()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in self.handleMatchButtonPress()
+        })
         button.setTitle("MATCH FACES", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .windsor
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = false
+        button.tintColor = .windsor
         return button
     }()
 
     private lazy var clearButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(handleClearButtonPress), for: .touchUpInside)
+        var configuration = UIButton.Configuration.tinted()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in self.handleClearButtonPress()
+        })
         button.setTitle("CLEAR", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .windsor
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = false
+        button.tintColor = .windsor
         return button
     }()
 
@@ -282,7 +286,7 @@ final class MatchFacesRequestViewController: UIViewController {
         })
     }
 
-    @objc private func handleClearButtonPress(sender: UIButton) {
+    @objc private func handleClearButtonPress() {
         firstImageView.image = nil
         selectedFirstImageType = nil
 

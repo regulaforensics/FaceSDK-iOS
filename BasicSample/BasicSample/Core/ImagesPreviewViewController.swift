@@ -16,17 +16,20 @@ final class ImagesPreviewViewController: UIViewController {
         view.contentMode = .scaleAspectFit
         return view
     }()
-
+    
     private lazy var nextButton: UIButton = {
-        let view = UIButton(type: .system)
-        view.setTitle("Next", for: .normal)
-        view.setTitleColor(.white, for: .normal)
-        view.backgroundColor = .windsor
-        view.contentEdgeInsets = UIEdgeInsets(top: 5, left: 16, bottom: 6, right: 16)
-        view.layer.cornerRadius = 5
-        view.clipsToBounds = false
-        view.addTarget(self, action: #selector(self.handleNextButtonPress), for: .touchUpInside)
-        return view
+        var configuration = UIButton.Configuration.tinted()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 16, bottom: 6, trailing: 16)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in
+            self.handleNextButtonPress()
+        })
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .windsor
+        button.tintColor = .windsor
+        return button
     }()
 
     private var currentImageIndex = -1

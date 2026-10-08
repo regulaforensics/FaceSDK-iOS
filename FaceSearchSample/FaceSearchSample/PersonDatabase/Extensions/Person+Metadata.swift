@@ -13,10 +13,10 @@ extension PersonDatabase.Person {
     
     var surname: String? {
         get {
-            metadata["surname"] as? String
+            metadata?["surname"] as? String
         }
         set {
-            metadata["surname"] = newValue
+            metadata?["surname"] = newValue
         }
     }
 }

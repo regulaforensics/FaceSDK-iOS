@@ -108,47 +108,54 @@ class DetectFacesViewController: UIViewController, UINavigationControllerDelegat
     }()
     
     private lazy var resultsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(didPressResults(_:)), for: .touchUpInside)
+        var configuration = UIButton.Configuration.tinted()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in
+            self.didPressResults()
+        })
         button.setTitle("See Results", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .white
         button.setTitleColor(.windsor, for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = false
         return button
     }()
     
     private lazy var pickPhotoButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(didPressPickPhoto(_:)), for: .touchUpInside)
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in
+            self.didPressPickPhoto()
+        })
         button.setTitle("Pick Photo", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .white
         button.setTitleColor(.windsor, for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = false
         return button
     }()
     
     private lazy var sendButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(didPressSendButton(_:)), for: .touchUpInside)
+        var configuration = UIButton.Configuration.tinted()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        configuration.cornerStyle = .small
+        
+        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in
+            self.didPressSendButton()
+        })
         button.setTitle("Detect Faces", for: .normal)
         button.setTitle("Loading ...", for: .disabled)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .windsor
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = false
+        button.tintColor = .windsor
         return button
     }()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .whiteLarge)
+        let indicator = UIActivityIndicatorView(style: .large)
         indicator.hidesWhenStopped = true
         indicator.color = .black
         return indicator
@@ -222,7 +229,7 @@ class DetectFacesViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    @objc private func didPressSendButton(_ sender: Any) {
+    @objc private func didPressSendButton() {
         sendDetectFacesRequest()
     }
     
@@ -232,13 +239,13 @@ class DetectFacesViewController: UIViewController, UINavigationControllerDelegat
         sendDetectFacesRequest()
     }
     
-    @objc private func didPressResults(_ sender: Any) {
+    @objc private func didPressResults() {
         guard let images = models[selectedModelIndex].detectedImages[selectedScenario] else { return }
         let imageVC = ImagesPreviewViewController(images: images)
         navigationController?.pushViewController(imageVC, animated: true)
     }
     
-    @objc private func didPressPickPhoto( _ sender: Any) {
+    @objc private func didPressPickPhoto() {
         imagePicker.presentPickerActions(from: galleryView)
     }
     

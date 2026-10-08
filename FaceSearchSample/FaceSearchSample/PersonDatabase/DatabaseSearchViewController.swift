@@ -57,8 +57,8 @@ class DatabaseSearchViewController: UIViewController {
 
     private func searchPerson(searchRequest: PersonDatabase.SearchPersonRequest, completion: @escaping (Result<[PersonDatabase.SearchPerson], Error>) -> Void) {
         searchRequest.detectAll = true
-        if let group = group {
-            searchRequest.groupIdsForSearch = [group.itemId]
+        if let group = group, let groupId = group.itemId {
+            searchRequest.groupIdsForSearch = [groupId]
         }  else if let groupIds = groupIds {
             searchRequest.groupIdsForSearch = groupIds
         }

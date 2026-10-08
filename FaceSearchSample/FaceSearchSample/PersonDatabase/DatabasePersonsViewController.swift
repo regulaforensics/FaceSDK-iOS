@@ -44,8 +44,11 @@ class DatabasePersonsViewController: UIViewController {
     
     //MARK: - Database
     private func loadPersons() {
+        guard let groupId = group.itemId else {
+            return
+        }
         showLoadingActivity()
-        database.getGroupPersons(groupId: group.itemId) { [weak self] response in
+        database.getGroupPersons(groupId: groupId) { [weak self] response in
             self?.hideLoadingActivity()
             if let persons = response.items {
                 self?.persons = persons
@@ -57,8 +60,11 @@ class DatabasePersonsViewController: UIViewController {
     }
     
     private func deletePerson(person: PersonDatabase.Person) {
+        guard let personId = person.itemId else {
+            return
+        }
         showLoadingActivity()
-        database.deletePerson(personId: person.itemId) { [weak self] response in
+        database.deletePerson(personId: personId) { [weak self] response in
             self?.hideLoadingActivity()
             if let error = response.error {
                 self?.showError(error: error)
@@ -69,9 +75,12 @@ class DatabasePersonsViewController: UIViewController {
     }
     
     private func removePersonFromGroup(person: PersonDatabase.Person) {
+        guard let groupId = group.itemId, let personId = person.itemId else {
+            return
+        }
         showLoadingActivity()
-        let editRequest =  PersonDatabase.EditGroupPersonsRequest(personIdsToAdd: nil, personIdsToRemove: [person.itemId])
-        database.editGroupPersons(groupId: group.itemId, request: editRequest) { [weak self] response in
+        let editRequest =  PersonDatabase.EditGroupPersonsRequest(personIdsToAdd: nil, personIdsToRemove: [personId])
+        database.editGroupPersons(groupId: groupId, request: editRequest) { [weak self] response in
             self?.hideLoadingActivity()
             if let error = response.error {
                 self?.showError(error: error)

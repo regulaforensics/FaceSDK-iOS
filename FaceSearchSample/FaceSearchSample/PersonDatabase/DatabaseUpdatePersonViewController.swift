@@ -59,9 +59,11 @@ class DatabaseUpdatePersonViewController: UIViewController {
     //MARK: - Database
     private func loadPersonData() {
         setPersonData()
-        
+        guard let personId = person.itemId else {
+            return
+        }
         loadingIndicator.startAnimating()
-        database.getPersonImages(personId: person.itemId) { response in
+        database.getPersonImages(personId: personId) { response in
             self.loadingIndicator.stopAnimating()
             if let personImages = response.items {
                 self.personImages = personImages
@@ -183,12 +185,16 @@ class DatabaseUpdatePersonViewController: UIViewController {
         var error: Error?
         var result = false
         
+        guard let personId = person.itemId else {
+            return
+        }
+        
         for image in pickedImages {
             guard let imageData = image.pngData() else { continue }
             let upload = PersonDatabase.ImageUpload(imageData:imageData)
             group.enter()
             
-            database.addPersonImage(personId: person.itemId, imageUpload: upload) { response in
+            database.addPersonImage(personId: personId, imageUpload: upload) { response in
                 result = response.item != nil
                 error = response.error
                 group.leave()
@@ -208,9 +214,16 @@ class DatabaseUpdatePersonViewController: UIViewController {
         var error: Error?
         var result = false
         
+        guard let personId = person.itemId else {
+            return
+        }
+        
         for personImage in personImagesToRemove {
+            guard let imageId = personImage.itemId else {
+                continue
+            }
             group.enter()
-            database.deletePersonImage(personId: person.itemId, imageId: personImage.itemId) { response in
+            database.deletePersonImage(personId: personId, imageId: imageId) { response in
                 result = response.success
                 error = response.error
                 group.leave()
@@ -333,9 +346,9 @@ extension DatabaseUpdatePersonViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             let personImage = personImages[indexPath.row]
             cell.imageView.image = UIImage(named: "person_placeholder")
-            let toRemove = personImagesToRemove.contains(where: { $0.itemId == personImage.itemId })
+            let toRemove = personImagesToRemove.contains(where: { $0.itemId! == personImage.itemId! })
             cell.markToRemove = toRemove
-            database.getPersonImage(personId: person.itemId, imageId: personImage.itemId) { [weak cell] response in
+            database.getPersonImage(personId: person.itemId!, imageId: personImage.itemId!) { [weak cell] response in
                 if let data = response.data {
                     cell?.imageView.image = UIImage(data: data)
                 }

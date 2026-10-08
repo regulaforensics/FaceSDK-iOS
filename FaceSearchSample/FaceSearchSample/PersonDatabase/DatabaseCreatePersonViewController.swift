@@ -65,17 +65,21 @@ class DatabaseCreatePersonViewController: UIViewController {
             return
         }
         let metadata = ["surname": surname ?? ""]
+        
+        guard let groupId = group.itemId else {
+            return
+        }
 
-        database.createPerson(name: name, metadata: metadata, groupIds: [group.itemId]) { [weak self] response in
+        database.createPerson(name: name, metadata: metadata, groupIds: [groupId]) { [weak self] response in
             guard let self = self else { return }
-            if let person = response.item {
+            if let person = response.item, let personId = person.itemId {
                 var error: Error?
                 let group = DispatchGroup()
                 for image in self.images {
                     guard let imageData = image.pngData() else { continue }
                     let upload = PersonDatabase.ImageUpload(imageData:imageData)
                     group.enter()
-                    self.database.addPersonImage(personId: person.itemId, imageUpload: upload) { response in
+                    self.database.addPersonImage(personId: personId, imageUpload: upload) { response in
                         error = response.error
                         group.leave()
                     }

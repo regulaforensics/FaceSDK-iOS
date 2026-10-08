@@ -61,10 +61,10 @@ final class LivenessUIConfigurationItem: CatalogItem {
             } else {
                 // Use your image assets.
             }
-            $0.setFont(Fonts.title, forItem: .OnboardingScreenTitleLabel)
-            $0.setFont(Fonts.subtitle, forItem: .OnboardingScreenSubtitleLabel)
-            $0.setFont(Fonts.message, forItem: .OnboardingScreenMessageLabels)
-            $0.setFont(Fonts.button, forItem: .OnboardingScreenStartButton)
+            $0.setFont(Fonts.title, forItem: .onboardingScreenTitleLabel)
+            $0.setFont(Fonts.subtitle, forItem: .onboardingScreenSubtitleLabel)
+            $0.setFont(Fonts.message, forItem: .onboardingScreenMessageLabels)
+            $0.setFont(Fonts.button, forItem: .onboardingScreenStartButton)
 
             // Camera
             $0.setColor(Colors.title, forItem: .CameraScreenFrontHintLabelText)
@@ -78,12 +78,12 @@ final class LivenessUIConfigurationItem: CatalogItem {
 
             $0.setImage(Images.close, forItem: .cameraScreenCloseButton)
 
-            $0.setFont(Fonts.message, forItem: .CameraScreenHintLabel)
+            $0.setFont(Fonts.message, forItem: .cameraScreenHintLabel)
 
             $0.setColor(Colors.lightGray, forItem: .ProcessingScreenBackground)
             $0.setColor(Colors.title, forItem: .ProcessingScreenTitleLabel)
             $0.setColor(Colors.message, forItem: .ProcessingScreenProgress)
-            $0.setFont(Fonts.subtitle, forItem: .ProcessingScreenLabel)
+            $0.setFont(Fonts.subtitle, forItem: .processingScreenLabel)
 
             // Retry screen
             $0.setImage(Images.close, forItem: .retryScreenCloseButton)
@@ -104,10 +104,10 @@ final class LivenessUIConfigurationItem: CatalogItem {
             $0.setColor(Colors.title, forItem: .RetryScreenRetryButtonBackground)
             $0.setColor(Colors.image, forItem: .RetryScreenRetryButtonTitle)
 
-            $0.setFont(Fonts.title, forItem: .RetryScreenTitleLabel)
-            $0.setFont(Fonts.subtitle, forItem: .RetryScreenSubtitleLabel)
-            $0.setFont(Fonts.message, forItem: .RetryScreenHintLabels)
-            $0.setFont(Fonts.button, forItem: .RetryScreenRetryButton)
+            $0.setFont(Fonts.title, forItem: .retryScreenTitleLabel)
+            $0.setFont(Fonts.subtitle, forItem: .retryScreenSubtitleLabel)
+            $0.setFont(Fonts.message, forItem: .retryScreenHintLabels)
+            $0.setFont(Fonts.button, forItem: .retryScreenRetryButton)
 
             // Success screen
             $0.setImage(Images.success, forItem: .successScreenImage)

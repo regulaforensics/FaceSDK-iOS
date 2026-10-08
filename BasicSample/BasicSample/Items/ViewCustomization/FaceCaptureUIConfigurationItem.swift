@@ -56,13 +56,13 @@ final class FaceCaptureUIConfigurationItem: CatalogItem {
             $0.setColor(Colors.lightGray, forItem: .CameraScreenStrokeActive)
             $0.setColor(Colors.image, forItem: .CameraScreenStrokeNormal)
 
-            $0.setImage(Images.close, forItem: .CameraScreenCloseButton)
-            $0.setImage(Images.swap, forItem: .CameraScreenSwitchButton)
-            $0.setImage(Images.torch, forItem: .CameraScreenLightOnButton)
-            $0.setImage(Images.torch, forItem: .CameraScreenLightOffButton)
+            $0.setImage(Images.close, forItem: .cameraScreenCloseButton)
+            $0.setImage(Images.swap, forItem: .cameraScreenSwitchButton)
+            $0.setImage(Images.torch, forItem: .cameraScreenLightOnButton)
+            $0.setImage(Images.torch, forItem: .cameraScreenLightOffButton)
 
-            $0.setFont(Fonts.message, forItem: .CameraScreenHintLabel)
-            $0.setFont(Fonts.message, forItem: .ProcessingScreenLabel)
+            $0.setFont(Fonts.message, forItem: .cameraScreenHintLabel)
+            $0.setFont(Fonts.message, forItem: .processingScreenLabel)
         })
         FaceSDK.service.customization.configuration = interfaceConfiguration
 

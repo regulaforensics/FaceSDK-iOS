@@ -75,6 +75,9 @@ extension LivenessProcessStatus {
         case .failed: return "FAILED"
         case .retry: return "RETRY"
         case .success: return "SUCCESS"
+        case .removeOcclusion: return "REMOVE_OCCLUSION"
+        case .blink: return "BLINK"
+        case .badQuality: return "BAD_QUALITY"
         @unknown default: return "UNKNOWN"
         }
     }

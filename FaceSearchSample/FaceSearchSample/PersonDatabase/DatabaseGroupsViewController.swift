@@ -50,8 +50,11 @@ class DatabaseGroupsViewController: UIViewController {
     }
     
     private func deleteGroup(group: PersonDatabase.PersonGroup) {
+        guard let groupId = group.itemId else {
+            return
+        }
         showLoadingActivity()
-        database.deleteGroup(groupId: group.itemId) { [weak self] response in
+        database.deleteGroup(groupId: groupId) { [weak self] response in
             self?.hideLoadingActivity()
             if let error = response.error {
                 self?.showError(error: error)
@@ -141,7 +144,7 @@ class DatabaseGroupsViewController: UIViewController {
 
     //MARK: - Actions
     @IBAction private func didPressSearchButton(_ sender: Any) {
-        let groupIds = self.groups.map({ $0.itemId })
+        let groupIds = self.groups.compactMap({ $0.itemId })
         let vc = DatabaseSearchViewController()
         vc.groupIds = groupIds
         navigationController?.pushViewController(vc, animated: true)
